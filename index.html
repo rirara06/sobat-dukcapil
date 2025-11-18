@@ -327,11 +327,21 @@
         const tutupMenuPopUp = document.getElementById('tutupMenuPopUp');
         const backdropMenuPopUp = document.getElementById('backdropMenuPopUp');
 
+        // --- [DEBUG]: Cek apakah elemen ditemukan ---
+        console.log('Mencari elemen pop-up...');
+        if (!menuPopUp) console.error('ERROR: Elemen #menuPopUp tidak ditemukan.');
+        if (!tombolMenuPopUp) console.error('ERROR: Elemen #tombolMenuPopUp tidak ditemukan.');
+        if (!tutupMenuPopUp) console.error('ERROR: Elemen #tutupMenuPopUp tidak ditemukan.');
+        if (!backdropMenuPopUp) console.error('ERROR: Elemen #backdropMenuPopUp tidak ditemukan.');
+        console.log('Pencarian elemen selesai.');
+
+
         // Script Sederhana untuk Smooth Scrolling
         // (Sekarang juga berfungsi untuk menutup modal saat link diklik)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault(); // Mencegah "lompatan" bawaan browser
+                console.log('Link navigasi diklik:', this.getAttribute('href')); // [DEBUG]
 
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
@@ -346,6 +356,7 @@
 
                 // [PERUBAHAN]: Saat link diklik, tutup modal jika sedang terbuka
                 if (menuPopUp && !menuPopUp.classList.contains('hidden')) {
+                    console.log('Menutup modal dari link nav'); // [DEBUG]
                     menuPopUp.classList.add('hidden');
                 }
             });
@@ -375,13 +386,20 @@
         // [BARU]: Event listener untuk BUKA modal
         if (tombolMenuPopUp) {
             tombolMenuPopUp.addEventListener('click', () => {
-                menuPopUp.classList.remove('hidden');
+                console.log('Tombol BUKA modal diklik!'); // [DEBUG]
+                if (menuPopUp) {
+                    menuPopUp.classList.remove('hidden');
+                    console.log('Modal seharusnya TAMPIL.'); // [DEBUG]
+                } else {
+                    console.error('ERROR: menuPopUp null saat diklik.'); // [DEBUG]
+                }
             });
         }
         
         // [BARU]: Event listener untuk TUTUP modal (via tombol X)
         if (tutupMenuPopUp) {
             tutupMenuPopUp.addEventListener('click', () => {
+                console.log('Tombol TUTUP (X) diklik!'); // [DEBUG]
                 menuPopUp.classList.add('hidden');
             });
         }
@@ -389,10 +407,12 @@
         // [BARU]: Event listener untuk TUTUP modal (via klik backdrop)
         if (backdropMenuPopUp) {
             backdropMenuPopUp.addEventListener('click', () => {
+                console.log('Backdrop diklik!'); // [DEBUG]
                 menuPopUp.classList.add('hidden');
             });
         }
-        // --- Akhir Script Tombol Shortcut ---
+        
+        console.log('Script pop-up interaktif SIAP.'); // [DEBUG]
 
     </script>
 

@@ -38,7 +38,11 @@
         <div class="flex flex-col md:flex-row gap-8">
 
             <!-- Kolom Kiri: Daftar Isi (Navigasi) -->
-            <aside class="w-full md:w-1/4">
+            <!-- 
+              [PERUBAHAN 1]: Saya menambahkan id="daftar-isi" di sini.
+              Ini agar tombol shortcut tahu harus scroll ke mana.
+            -->
+            <aside id="daftar-isi" class="w-full md:w-1/4">
                 <!-- 'md:sticky' membuat menu ini "mengambang" saat di-scroll di desktop -->
                 <!-- 'top-8' memberi jarak 8 unit dari atas -->
                 <div class="md:sticky md:top-8 bg-white p-6 rounded-lg shadow-md">
@@ -95,7 +99,7 @@
                             Dinas Kependudukan dan Pencatatan Sipil (Disdukcapil), terus berkomitmen untuk memberikan pelayanan publik yang prima di era digital. Sejalan dengan visi tersebut, kami dengan bangga mempersembahkan versi terbaru dari aplikasi Sobat Dukcapil, solusi terpadu untuk layanan administrasi kependudukan (Adminduk) online di Kota Tangerang.
                         </p>
                         <p class="mt-4 text-gray-700 leading-relaxed">
-                            Kehadiran versi terbaru ini dirancang untuk menjawab kebutuhan masyarakat akan layanan yang tidak hanya cepat dan akurat, tetapi juga fleksibel. Kami memahami bahwa kesibukan dan mobilitas warga sering menjadi kendala dalam pengurusan dokumen kependudukan.
+                            Kehadiran versi terbaru ini dirancang untuk menjawab kebutuhan masyarakat akan layanan yang tidak only cepat dan akurat, tetapi juga fleksibel. Kami memahami bahwa kesibukan dan mobilitas warga sering menjadi kendala dalam pengurusan dokumen kependudukan.
                         </p>
 						<p class="mt-4 text-gray-700 leading-relaxed">
                             Oleh karena itu, Sobat Dukcapil hadir untuk memudahkan masyarakat secara signifikan. Melalui aplikasi ini, proses birokrasi yang panjang dipangkas, dan antrean fisik di kantor layanan kini dapat dihindari.
@@ -249,6 +253,25 @@
         </div>
     </div>
 
+    <!-- 
+      [PERUBAHAN 2]: Tombol Shortcut "Kembali ke Daftar Isi"
+      - 'fixed' agar tetap di posisi
+      - 'bottom-6 right-6' untuk posisi di kanan bawah
+      - 'md:hidden' agar HANYA tampil di HP (mobile)
+      - 'opacity-0' agar tersembunyi awalnya
+      - 'z-50' agar tampil di atas konten lain
+    -->
+    <a href="#daftar-isi" 
+       id="tombolShortcut"
+       aria-label="Kembali ke Daftar Isi"
+       class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none md:hidden z-50">
+        <!-- Ikon Panah Atas (SVG) -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+    </a>
+
+
     <script>
         // Script Sederhana untuk Smooth Scrolling (walaupun 'scroll-smooth' di HTML sudah banyak membantu)
         // Script ini memastikan kompatibilitas yang lebih baik
@@ -268,6 +291,32 @@
                 }
             });
         });
+
+        // --- [PERUBAHAN 3]: Script untuk Tombol Shortcut ---
+        
+        // Ambil elemen tombol shortcut
+        const tombolShortcut = document.getElementById('tombolShortcut');
+        
+        // Ambil elemen header untuk menentukan offset (jarak scroll)
+        const header = document.querySelector('header');
+        // Tentukan kapan tombol harus muncul (setelah scroll melewati tinggi header + 50px)
+        const scrollOffset = header ? header.offsetHeight + 50 : 300; 
+
+        // Tambahkan event listener untuk 'scroll'
+        window.addEventListener('scroll', () => {
+            // Jika posisi scroll lebih besar dari offset
+            if (window.scrollY > scrollOffset) {
+                // Tampilkan tombol
+                tombolShortcut.classList.remove('opacity-0', 'pointer-events-none');
+                tombolShortcut.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                // Sembunyikan tombol
+                tombolShortcut.classList.remove('opacity-100', 'pointer-events-auto');
+                tombolShortcut.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+        // --- Akhir Script Tombol Shortcut ---
+
     </script>
 
 </body>

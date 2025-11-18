@@ -4,28 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panduan Sobat Dukcapil</title>
-    <!-- Memuat Tailwind CSS untuk styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Menambahkan sedikit padding di atas saat scroll-to-ID, agar judul tidak terpotong */
+        /* Menambahkan padding di atas saat scroll-to-ID agar judul tidak tertutup header/top browser */
         html {
-            scroll-padding-top: 2rem;
+            scroll-padding-top: 6rem; 
         }
 		
 		.list-bintang {
-        /* Perintah ini mengganti bullet standar dengan karakter ★ */
-        list-style-type: "★ "; 
-      }
-	  
-	  
-	  
+            /* Mengganti bullet standar dengan bintang */
+            list-style-type: "★ "; 
+        }
+
+        /* Style tambahan untuk animasi accordion (buka-tutup menu) */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        /* Animasi halus saat menu dibuka */
+        details[open] summary ~ * {
+            animation: sweep .3s ease-in-out;
+        }
+        @keyframes sweep {
+            0%    {opacity: 0; transform: translateY(-10px)}
+            100%  {opacity: 1; transform: translateY(0)}
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
 
     <div class="container mx-auto max-w-6xl p-4 sm:p-8">
         
-        <!-- Judul Utama -->
         <header class="mb-8">
             <h1 class="text-3xl md:text-4xl font-bold text-center text-blue-600">
                 Panduan Penggunaan Aplikasi Sobat Dukcapil
@@ -37,23 +48,12 @@
 
         <div class="flex flex-col md:flex-row gap-8">
 
-            <!-- Kolom Kiri: Daftar Isi (Navigasi) -->
-            <!-- 
-              ID "daftar-isi" di sini tetap berguna sebagai anchor 
-              jika kita membutuhkannya, meskipun tombol shortcut
-              sekarang tidak mengarah langsung ke sini.
-            -->
             <aside id="daftar-isi" class="w-full md:w-1/4">
-                <!-- 'md:sticky' membuat menu ini "mengambang" saat di-scroll di desktop -->
-                <!-- 'top-8' memberi jarak 8 unit dari atas -->
                 <div class="md:sticky md:top-8 bg-white p-6 rounded-lg shadow-md">
                     <h2 class="text-xl font-semibold text-gray-900 mb-4 border-b pb-2">
                         Daftar Isi
                     </h2>
                     <nav class="flex flex-wrap md:flex-col gap-2">
-                        <!-- 
-                          Link navigasi ini akan mengarah ke ID elemen di kolom kanan.
-                        -->
                         <a href="#beranda" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
                             Beranda
                         </a>
@@ -61,16 +61,19 @@
                             Cara Daftar Akun
                         </a>
                         <a href="#layanan-b" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
-                            Login ke Aplikasi Sobat Dukcapil
+                            Login Aplikasi
                         </a>
                         <a href="#layanan-c" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
                             Jenis Layanan
                         </a>
                         <a href="#layanan-d" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
-                            Melihat Progres Pengajuan Layanan
+                            Cara Pengajuan Layanan
                         </a>
                         <a href="#layanan-e" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
-                            Cetak Dokumen Hasil Pelayanan
+                            Melihat Progres
+                        </a>
+                        <a href="#layanan-f" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
+                            Cetak Dokumen
                         </a>
 						<a href="#kontak" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
                             Kontak Kami
@@ -79,40 +82,21 @@
                 </div>
             </aside>
 
-            <!-- Kolom Kanan: Konten Layanan -->
             <main class="w-full md:w-3/4">
                 <div class="space-y-12">
 
-                    <!-- Bagian Beranda -->
                     <section id="beranda" class="bg-white p-6 sm:p-8 rounded-lg shadow-md">
                         <h3 class="text-2xl font-bold text-blue-500 mb-4">
-                            Selamat Datang!
+                            Haloo Sobat Dukcapil!
                         </h3>
-
-                        <!-- == GAMBAR BARU DITAMBAHKAN DI SINI == -->
                         <img src="https://raw.githubusercontent.com/rirara06/sobat-dukcapil/main/halaman%20sobat.JPG" 
                              alt="Gambar sobat dukcapil" 
                              class="w-full h-auto object-cover rounded-lg shadow-md mb-6">
-                        <!-- == AKHIR DARI GAMBAR BARU == -->
-
                         <p class="text-gray-700 leading-relaxed">
                             Dinas Kependudukan dan Pencatatan Sipil (Disdukcapil), terus berkomitmen untuk memberikan pelayanan publik yang prima di era digital. Sejalan dengan visi tersebut, kami dengan bangga mempersembahkan versi terbaru dari aplikasi Sobat Dukcapil, solusi terpadu untuk layanan administrasi kependudukan (Adminduk) online di Kota Tangerang.
                         </p>
-                        <p class="mt-4 text-gray-700 leading-relaxed">
-                            Kehadiran versi terbaru ini dirancang untuk menjawab kebutuhan masyarakat akan layanan yang tidak only cepat dan akurat, tetapi juga fleksibel. Kami memahami bahwa kesibukan dan mobilitas warga sering menjadi kendala dalam pengurusan dokumen kependudukan.
-                        </p>
-						<p class="mt-4 text-gray-700 leading-relaxed">
-                            Oleh karena itu, Sobat Dukcapil hadir untuk memudahkan masyarakat secara signifikan. Melalui aplikasi ini, proses birokrasi yang panjang dipangkas, dan antrean fisik di kantor layanan kini dapat dihindari.
-                        </p>
-						<p class="mt-4 text-gray-700 leading-relaxed">
-                            Dengan Sobat Dukcapil, Anda memiliki kendali penuh atas layanan Adminduk Anda. Anda dapat mengajukan layanan kapan saja dan di mana saja—baik dari rumah, kantor, atau dalam perjalanan—cukup melalui ponsel pintar Anda, 24 jam sehari, 7 hari seminggu.
-                        </p>
-						<p class="mt-4 text-gray-700 leading-relaxed">
-                            Buku panduan ini disusun untuk memandu Anda langkah demi langkah dalam memanfaatkan seluruh fitur dan kemudahan yang ditawarkan oleh aplikasi Sobat Dukcapil versi terbaru. Selamat menikmati era baru layanan Adminduk yang lebih mudah, cepat, dan transparan.
-                        </p>
                     </section>
 
-                    <!-- Bagian Layanan A -->
                     <section id="layanan-a" class="bg-white p-6 sm:p-8 rounded-lg shadow-md">
                         <h3 class="text-2xl font-bold text-blue-500 mb-4">
                             Cara Daftar Akun Sobat Dukcapil
@@ -120,146 +104,192 @@
                         <p class="text-gray-700 leading-relaxed mb-4">
                             Untuk dapat mengajukan layanan administrasi kependudukan pada aplikasi Sobat Dukcapil, Anda wajib memiliki akun yang terverifikasi.
                         </p>
-						<p class="mt-4 text-gray-700 leading-relaxed">
-                            Jika Anda  sudah  memiliki akun di aplikasi Tangerang LIVE, Anda TIDAK PERLU MEMBUAT AKUN BARU. 
-                        </p>
-						<p class="mt-4 text-gray-700 leading-relaxed">
-                            Anda bisa langsung login menggunakan NIK dan password yang sama dengan akun Tangerang LIVe Anda.
-                        </p>
-						<p class="mt-4 text-gray-700 leading-relaxed">
-                            Jika Anda belum pernah memiliki akun Tangerang LIVe atau Sobat Dukcapil, Anda harus melakukan registrasi terlebih dahulu.
-                        </p>
-						<p class="mt-4 text-gray-700 leading-relaxed">
-                            Proses ini melibatkan verifikasi data dengan KTP-el dan foto selfie untuk memastikan keamanan data Anda.
-                        </p>
-						<p class="text-gray-700 leading-relaxed mb-4">
-                            Langkah-langkah Registrasi:
-                        </p>
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Kunjungi Halaman Login Buka browser Anda (di komputer atau HP) dan akses alamat : <a href="https://sobatdukcapil.tangerangkota.go.id/login" 
-                                target="_blank" rel="noopener noreferrer" class="text-blue-600 italic underline"> sobatdukcapil.tangerangkota.go.id/login</a>
-							</li>
-							<!-- == GAMBAR BARU DITAMBAHKAN DI SINI == -->
-                        
-						<figure>
-						<img src="https://raw.githubusercontent.com/rirara06/sobat-dukcapil/f9dfac9e68963d86270fe31c8968a636cddcff1f/halaman%20login.JPG" 
-                             alt="Gambar login sobat dukcapil" 
-                             class="w-full h-auto object-cover rounded-lg shadow-md mb-6">
-							 
-							 <figcaption class="text-center text-sm text-gray-600 mt-2 italic">
-                                         Gambar halaman login Sobat Dukcapil.
-                             </figcaption>
-                             </figure>
-							 
-                        <!-- == AKHIR DARI GAMBAR BARU == -->
-                            <li>Mulai Registrasi Pada halaman tersebut, klik tombol "Daftar", maka anda akan diarahkan ke halaman registrasi</li>
-                            <li>Isi Formulir Data Diri Lengkapi semua kolom yang diminta dengan data yang valid, seperti:</li>
-							  <ul class="list-bintang list-inside text-gray-700 space-y-2 mt-2 pl-7">   
-							        <li>NIK (Nomor Induk Kependudukan)</li> 
-								    <li>Email</li>
-								    <li>No Telepon</li>
-								    <li>Buat Password untuk login</li>
-							 	</ul>
-                            <li>Upload KTP-el Anda akan diminta untuk mengunggah foto KTP-el Anda. Pastikan foto terlihat jelas, tidak buram, dan semua tulisan terbaca.</li>
-							<li>Lakukan Selfie (Verifikasi Wajah) Ikuti instruksi di layar untuk mengambil foto selfie.</li>
-							<li>Kirim Pengajuan Setelah semua data dan foto terisi dengan benar, klik tombol "Registrasi".</li>
-							
-							<figure>
-							<img src="https://raw.githubusercontent.com/rirara06/sobat-dukcapil/main/halaman%20registrasi.JPG" alt="Halaman Registrasi Sobat Dukcapil"
-							     alt="Gambar registrasi sobat dukcapil" 
-                             class="w-full h-auto object-cover rounded-lg shadow-md mb-6">
-							 <figcaption class="text-center text-sm text-gray-600 mt-2 italic">
-                                         Gambar Halaman Registrasi Sobat Dukcapil.
-                             </figcaption>
-                             </figure>
-							 
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
+                            <li>Kunjungi Halaman Login: <a href="https://sobatdukcapil.tangerangkota.go.id/login" target="_blank" class="text-blue-600 italic underline">sobatdukcapil.tangerangkota.go.id/login</a></li>
+                            <li>Klik tombol "Daftar" jika belum punya akun.</li>
+                            <li>Isi NIK, Email, No Telepon, dan buat Password.</li>
+                            <li>Upload KTP-el dan Foto Selfie.</li>
+                            <li>Tunggu verifikasi admin (maksimal 1x24 jam hari kerja).</li>
                         </ul>
+                        <figure>
+                            <img src="https://raw.githubusercontent.com/rirara06/sobat-dukcapil/f9dfac9e68963d86270fe31c8968a636cddcff1f/halaman%20login.JPG" 
+                                 alt="Gambar login sobat dukcapil" 
+                                 class="w-full h-auto object-cover rounded-lg shadow-md mb-2">
+                             <figcaption class="text-center text-sm text-gray-600 italic">Halaman Login Sobat Dukcapil</figcaption>
+                        </figure>
                     </section>
 
-                    <!-- Bagian Layanan B -->
                     <section id="layanan-b" class="bg-white p-6 sm:p-8 rounded-lg shadow-md">
                         <h3 class="text-2xl font-bold text-blue-500 mb-4">
-                            Bagaiamana cara login/masuk ke aplikasi Sobat Dukcapil
+                            Bagaimana cara login/masuk ke aplikasi
                         </h3>
                         <p class="text-gray-700 leading-relaxed mb-4">
-                            Ini adalah deskripsi untuk layanan B. Ubah ide Anda menjadi aplikasi seluler yang fungsional untuk platform iOS dan Android. Kami menggunakan teknologi terbaru untuk memastikan aplikasi Anda cepat, aman, dan mudah digunakan.
+                            Jika akun sudah terverifikasi atau Anda punya akun Tangerang LIVE:
                         </p>
                         <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Pengembangan Aplikasi Native (Swift/Kotlin)</li>
-                            <li>Pengembangan Aplikasi Hybrid (React Native/Flutter)</li>
-                            <li>Pengujian dan Jaminan Kualitas (QA)</li>
-                            <li>Dukungan dan Pemeliharaan Pasca-peluncuran</li>
+                            <li>Masukkan NIK.</li>
+                            <li>Masukkan Password (sama dengan Tangerang LIVE jika ada).</li>
+                            <li>Klik "Login".</li>
                         </ul>
                     </section>
 
-                    <!-- Bagian Layanan C -->
                     <section id="layanan-c" class="bg-white p-6 sm:p-8 rounded-lg shadow-md">
                         <h3 class="text-2xl font-bold text-blue-500 mb-4">
-                            Jenis layanan yang tersedia pada aplikasi Sobat Dukcapil
+                            Jenis layanan yang tersedia
                         </h3>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            Ini adalah deskripsi untuk layanan C. Tingkatkan visibilitas Anda di mesin pencari seperti Google. Layanan SEO kami mencakup audit kompreprehensif, penelitian kata kunci, optimasi on-page dan off-page, serta pembuatan tautan (link building) yang etis.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Audit SEO Teknis</li>
-                            <li>Penelitian Kata Kunci (Keyword Research)</li>
-                            <li>Optimasi On-Page</li>
-                            <li>Content Marketing</li>
-                        </ul>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                <h4 class="font-bold text-blue-800 mb-2">A. Pencatatan Sipil</h4>
+                                <ul class="list-disc list-inside text-sm text-gray-700">
+                                    <li>Akta Kelahiran & Kematian</li>
+                                    <li>Akta Perkawinan & Perceraian</li>
+                                    <li>Surat Keterangan Single</li>
+                                    <li>Kutipan ke-2 Akta</li>
+                                    <li>Rekomendasi & Perbaikan Akta</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                <h4 class="font-bold text-green-800 mb-2">B. Kependudukan</h4>
+                                <ul class="list-disc list-inside text-sm text-gray-700">
+                                    <li>KTP-el & KIA</li>
+                                    <li>Kartu Keluarga</li>
+                                    <li>Pindah Datang</li>
+                                    <li>SKTT bagi WNA</li>
+                                </ul>
+                            </div>
+                        </div>
                     </section>
 
-                    <!-- Bagian Layanan D -->
                     <section id="layanan-d" class="bg-white p-6 sm:p-8 rounded-lg shadow-md">
-                        <h3 class="text-2xl font-bold text-blue-500 mb-4">
-                           Melihat progres pengajuan layanan
+                        <h3 class="text-2xl font-bold text-blue-500 mb-6">
+                           Cara Pengajuan Layanan Melalui Aplikasi
                         </h3>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            Ini adalah deskripsi untuk layanan D. Jangkau audiens target Anda secara efektif melalui strategi pemasaran digital yang terintegrasi. Kami menangani semuanya, mulai dari media sosial hingga iklan berbayar (PPC).
+                        
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                            <p class="text-sm text-yellow-700">
+                                <strong>Panduan Interaktif:</strong> Klik pada kategori di bawah (A atau B) untuk membuka daftar layanan. Kemudian klik nama layanan untuk melihat penjelasan lengkapnya.
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            
+                            <details class="group border border-gray-200 rounded-lg bg-gray-50 open:bg-white open:ring-1 open:ring-blue-500 transition-all duration-300">
+                                <summary class="flex cursor-pointer items-center justify-between p-4 font-bold text-lg text-gray-800 hover:bg-blue-50 rounded-lg select-none">
+                                    <span>A. Pencatatan Sipil</span>
+                                    <span class="transition-transform group-open:rotate-180">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-blue-500">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </span>
+                                </summary>
+                                <div class="border-t border-gray-200 p-2 bg-white rounded-b-lg">
+                                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                        <li><a href="#detail-akta-lahir" class="block px-4 py-2 rounded hover:bg-blue-50 text-blue-600 hover:text-blue-800 transition">➤ Akta Kelahiran</a></li>
+                                        <li><a href="#detail-akta-mati" class="block px-4 py-2 rounded hover:bg-blue-50 text-blue-600 hover:text-blue-800 transition">➤ Akta Kematian</a></li>
+                                        <li><a href="#detail-akta-kawin" class="block px-4 py-2 rounded hover:bg-blue-50 text-blue-600 hover:text-blue-800 transition">➤ Akta Perkawinan</a></li>
+                                        <li><a href="#detail-akta-cerai" class="block px-4 py-2 rounded hover:bg-blue-50 text-blue-600 hover:text-blue-800 transition">➤ Akta Perceraian</a></li>
+                                        <li><a href="#detail-sk-single" class="block px-4 py-2 rounded hover:bg-blue-50 text-blue-600 hover:text-blue-800 transition">➤ Surat Keterangan Single</a></li>
+                                        <li><a href="#detail-kutipan2" class="block px-4 py-2 rounded hover:bg-blue-50 text-blue-600 hover:text-blue-800 transition">➤ Kutipan ke-2 Akta</a></li>
+                                        <li><a href="#detail-perbaikan" class="block px-4 py-2 rounded hover:bg-blue-50 text-blue-600 hover:text-blue-800 transition">➤ Perbaikan Akta</a></li>
+                                        <li><a href="#detail-rekomendasi" class="block px-4 py-2 rounded hover:bg-blue-50 text-blue-600 hover:text-blue-800 transition">➤ Rekomendasi Akta</a></li>
+                                    </ul>
+                                </div>
+                            </details>
+
+                            <details class="group border border-gray-200 rounded-lg bg-gray-50 open:bg-white open:ring-1 open:ring-green-500 transition-all duration-300">
+                                <summary class="flex cursor-pointer items-center justify-between p-4 font-bold text-lg text-gray-800 hover:bg-green-50 rounded-lg select-none">
+                                    <span>B. Kependudukan</span>
+                                    <span class="transition-transform group-open:rotate-180">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-green-500">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </span>
+                                </summary>
+                                <div class="border-t border-gray-200 p-2 bg-white rounded-b-lg">
+                                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                        <li><a href="#detail-ktp" class="block px-4 py-2 rounded hover:bg-green-50 text-green-600 hover:text-green-800 transition">➤ KTP-el</a></li>
+                                        <li><a href="#detail-kia" class="block px-4 py-2 rounded hover:bg-green-50 text-green-600 hover:text-green-800 transition">➤ Kartu Identitas Anak (KIA)</a></li>
+                                        <li><a href="#detail-kk" class="block px-4 py-2 rounded hover:bg-green-50 text-green-600 hover:text-green-800 transition">➤ Kartu Keluarga</a></li>
+                                        <li><a href="#detail-pindah" class="block px-4 py-2 rounded hover:bg-green-50 text-green-600 hover:text-green-800 transition">➤ Pindah Datang</a></li>
+                                        <li><a href="#detail-sktt" class="block px-4 py-2 rounded hover:bg-green-50 text-green-600 hover:text-green-800 transition">➤ SKTT (WNA)</a></li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+
+                        <div class="mt-10 pt-10 border-t-2 border-dashed border-gray-200 space-y-12">
+                            
+                            <article id="detail-akta-lahir" class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="text-xl font-bold text-blue-600 flex items-center gap-2">
+                                    📄 Panduan Akta Kelahiran
+                                </h4>
+                                <p class="mt-2 text-gray-700">Langkah-langkah untuk mengajukan akta kelahiran:</p>
+                                <ul class="list-disc list-inside mt-2 text-gray-600 space-y-1">
+                                    <li>Pilih menu Akta Kelahiran di dashboard.</li>
+                                    <li>Isi formulir data anak, orang tua, dan saksi.</li>
+                                    <li>Upload Surat Keterangan Lahir dari RS/Bidan.</li>
+                                    <li>Upload Buku Nikah Orang Tua & KK.</li>
+                                    <li>Kirim pengajuan.</li>
+                                </ul>
+                                <div class="mt-4 text-right">
+                                    <a href="#layanan-d" class="text-sm text-blue-500 hover:underline">↑ Kembali ke Menu Layanan</a>
+                                </div>
+                            </article>
+
+                            <article id="detail-ktp" class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="text-xl font-bold text-green-600 flex items-center gap-2">
+                                    🪪 Panduan KTP-el
+                                </h4>
+                                <p class="mt-2 text-gray-700">Langkah-langkah untuk layanan KTP-el (Cetak Ulang/Hilang/Rusak):</p>
+                                <ul class="list-disc list-inside mt-2 text-gray-600 space-y-1">
+                                    <li>Pilih menu KTP-el.</li>
+                                    <li>Pilih alasan permohonan (Hilang/Rusak/Perubahan Data).</li>
+                                    <li>Upload Surat Kehilangan Kepolisian (jika hilang) atau Foto KTP Rusak.</li>
+                                    <li>Upload Kartu Keluarga.</li>
+                                    <li>Kirim pengajuan.</li>
+                                </ul>
+                                <div class="mt-4 text-right">
+                                    <a href="#layanan-d" class="text-sm text-green-500 hover:underline">↑ Kembali ke Menu Layanan</a>
+                                </div>
+                            </article>
+                            
+                            <div class="text-center text-gray-500 italic py-4">
+                                (Tambahkan detail layanan lainnya di sini sesuai kebutuhan)
+                            </div>
+
+                        </div>
+                    </section>
+					
+					<section id="layanan-e" class="bg-white p-6 sm:p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-bold text-blue-500 mb-4">
+                           Melihat Progres Pengajuan
+                        </h3>
+                        <p class="text-gray-700 mb-4">
+                           Anda dapat memantau status pengajuan Anda melalui menu "Riwayat Layanan" di aplikasi. Status akan berubah dari "Diajukan" -> "Diproses" -> "Selesai" atau "Ditolak" (jika berkas kurang).
                         </p>
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Manajemen Media Sosial</li>
-                            <li>Iklan Google (Google Ads)</li>
-                            <li>Iklan Facebook/Instagram (Meta Ads)</li>
-                            <li>Email Marketing</li>
-                        </ul>
                     </section>
 
-					<!-- Bagian Layanan E -->
-                    <section id="layanan-e" class="bg-white p-6 sm:p-8 rounded-lg shadow-md">
+					<section id="layanan-f" class="bg-white p-6 sm:p-8 rounded-lg shadow-md">
                         <h3 class="text-2xl font-bold text-blue-500 mb-4">
-                           Cetak dokumen hasil pengajuan layanan
+                           Cetak Dokumen Hasil Pelayanan
                         </h3>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            Ini adalah deskripsi untuk layanan D. Jangkau audiens target Anda secara efektif melalui strategi pemasaran digital yang terintegrasi. Kami menangani semuanya, mulai dari media sosial hingga iklan berbayar (PPC).
+                         <p class="text-gray-700 mb-4">
+                           Dokumen kependudukan (KK, Akta) yang sudah bertanda tangan elektronik (Barcode) dapat dicetak mandiri menggunakan kertas HVS A4 80gram. File PDF akan dikirimkan ke email Anda atau dapat diunduh melalui aplikasi.
                         </p>
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Manajemen Media Sosial</li>
-                            <li>Iklan Google (Google Ads)</li>
-                            <li>Iklan Facebook/Instagram (Meta Ads)</li>
-                            <li>Email Marketing</li>
-                        </ul>
                     </section>
 
-                    <!-- Bagian Kontak -->
                     <section id="kontak" class="bg-white p-6 sm:p-8 rounded-lg shadow-md">
                         <h3 class="text-2xl font-bold text-blue-500 mb-4">
                             Kontak Kami
                         </h3>
-                        <p class="text-gray-700 leading-relaxed">
-                            Tertarik untuk bekerja sama? Hubungi kami melalui salah satu saluran berikut:
-                        </p>
                         <ul class="list-none space-y-3 mt-4">
                             <li class="flex items-center">
                                 <span class="text-blue-500 mr-3">►</span>
-                                <strong>Email:</strong>&nbsp; <a href="mailto:info@perusahaan.com" class="text-blue-600 hover:underline">info@perusahaan.com</a>
+                                <strong>Email:</strong>&nbsp; <a href="mailto:dukcapil@tangerangkota.go.id" class="text-blue-600 hover:underline">dukcapil@tangerangkota.go.id</a>
                             </li>
                             <li class="flex items-center">
                                 <span class="text-blue-500 mr-3">►</span>
-                                <strong>Telepon:</strong>&nbsp; (021) 123-4567
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-blue-500 mr-3">►</span>
-                                <strong>Alamat:</strong>&nbsp; Jl. Anggrek No. 123, Jakarta, Indonesia
+                                <strong>Instagram:</strong>&nbsp; @disdukcapiltangerangkota
                             </li>
                         </ul>
                     </section>
@@ -269,125 +299,76 @@
         </div>
     </div>
 
-    <!-- 
-      [PERUBAHAN 1]: Tombol 'a' (anchor) diubah menjadi 'button'.
-      ID diubah menjadi 'tombolMenuPopUp'
-      Ikon diubah menjadi ikon Menu (bars-3)
-      z-index diubah menjadi z-40
-    -->
     <button 
        id="tombolMenuPopUp"
        aria-label="Buka Daftar Isi"
-       class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none md:hidden z-40">
-        <!-- Ikon Menu (Bars 3) -->
+       class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none md:hidden z-40 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
     </button>
 
-    <!-- 
-      [PERUBAHAN 2]: Modal Pop-up Daftar Isi
-      Elemen baru ini berisi menu pop-up yang disalin dari
-      daftar isi utama.
-    -->
     <div id="menuPopUp" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
-        <!-- Backdrop (area gelap di belakang) -->
-        <div id="backdropMenuPopUp" class="absolute inset-0 bg-black/50"></div>
+        <div id="backdropMenuPopUp" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
         
-        <!-- Konten Modal -->
-        <div class="relative w-full max-w-sm bg-white p-6 rounded-lg shadow-xl">
-            <!-- Header Modal dengan Tombol Tutup -->
-            <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h2 class="text-xl font-semibold text-gray-900">
-                    Daftar Isi
-                </h2>
-                <button id="tutupMenuPopUp" aria-label="Tutup menu" class="text-gray-500 hover:text-gray-800">
+        <div class="relative w-full max-w-sm bg-white p-6 rounded-xl shadow-2xl transform transition-all scale-100">
+            <div class="flex justify-between items-center border-b border-gray-100 pb-3 mb-4">
+                <h2 class="text-xl font-bold text-gray-800">Navigasi Cepat</h2>
+                <button id="tutupMenuPopUp" class="text-gray-400 hover:text-red-500 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
-            
-            <!-- Salinan Navigasi dari <aside> -->
-            <nav class="flex flex-col gap-2">
-                <a href="#beranda" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
-                    Beranda
-                </a>
-                <a href="#layanan-a" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
-                    Cara Daftar Akun
-                </a>
-                <a href="#layanan-b" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
-                    Login ke Aplikasi Sobat Dukcapil
-                </a>
-                <a href="#layanan-c" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
-                    Jenis Layanan
-                </a>
-                <a href="#layanan-d" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
-                    Melihat Progres Pengajuan Layanan
-                </a>
-                <a href="#kontak" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
-                    Cetak Dokumen Hasil Pelayanan
-                </a>
-                <a href="#kontak" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
-                    Kontak Kami
-                </a>
+            <nav class="flex flex-col space-y-1 max-h-[60vh] overflow-y-auto pr-2">
+                <a href="#beranda" class="px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition">🏠 Beranda</a>
+                <a href="#layanan-a" class="px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition">📝 Cara Daftar Akun</a>
+                <a href="#layanan-b" class="px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition">🔐 Login Aplikasi</a>
+                <a href="#layanan-c" class="px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition">📋 Jenis Layanan</a>
+                <a href="#layanan-d" class="px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition">📱 Cara Pengajuan</a>
+                <a href="#layanan-e" class="px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition">📊 Melihat Progres</a>
+                <a href="#layanan-f" class="px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition">🖨️ Cetak Dokumen</a>
+                <a href="#kontak" class="px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition">📞 Kontak Kami</a>
             </nav>
         </div>
     </div>
 
-
     <script>
-        // --- [PERUBAHAN 3]: Mengambil elemen-elemen baru ---
+        // === LOGIKA JAVASCRIPT ===
+        
         const menuPopUp = document.getElementById('menuPopUp');
         const tombolMenuPopUp = document.getElementById('tombolMenuPopUp');
         const tutupMenuPopUp = document.getElementById('tutupMenuPopUp');
         const backdropMenuPopUp = document.getElementById('backdropMenuPopUp');
 
-        // --- [DEBUG]: Cek apakah elemen ditemukan ---
-        console.log('Mencari elemen pop-up...');
-        if (!menuPopUp) console.error('ERROR: Elemen #menuPopUp tidak ditemukan.');
-        if (!tombolMenuPopUp) console.error('ERROR: Elemen #tombolMenuPopUp tidak ditemukan.');
-        if (!tutupMenuPopUp) console.error('ERROR: Elemen #tutupMenuPopUp tidak ditemukan.');
-        if (!backdropMenuPopUp) console.error('ERROR: Elemen #backdropMenuPopUp tidak ditemukan.');
-        console.log('Pencarian elemen selesai.');
-
-
-        // Script Sederhana untuk Smooth Scrolling
-        // (Sekarang juga berfungsi untuk menutup modal saat link diklik)
+        // 1. Smooth Scrolling untuk semua link anchor
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault(); // Mencegah "lompatan" bawaan browser
-                console.log('Link navigasi diklik:', this.getAttribute('href')); // [DEBUG]
-
+                e.preventDefault();
+                
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
 
                 if (targetElement) {
-                    // Menggunakan scrollIntoView dengan behavior 'smooth'
                     targetElement.scrollIntoView({
                         behavior: 'smooth',
-                        block: 'start' // Posisikan di awal elemen target
+                        block: 'start'
                     });
                 }
 
-                // [PERUBAHAN]: Saat link diklik, tutup modal jika sedang terbuka
+                // Jika diklik dari dalam pop-up mobile, tutup pop-upnya
                 if (menuPopUp && !menuPopUp.classList.contains('hidden')) {
-                    console.log('Menutup modal dari link nav'); // [DEBUG]
                     menuPopUp.classList.add('hidden');
                 }
             });
         });
 
-        // --- [PERUBAHAN 4]: Script untuk Tombol Menu Pop-up ---
-        
-        // Ambil elemen header untuk menentukan offset (jarak scroll)
+        // 2. Menampilkan/Menyembunyikan Tombol Menu saat Scroll
         const header = document.querySelector('header');
-        // Tentukan kapan tombol harus muncul (setelah scroll melewati tinggi header + 50px)
+        // Tombol muncul setelah scroll melewati header (atau 300px jika header tdk ada)
         const scrollOffset = header ? header.offsetHeight + 50 : 300; 
 
-        // Tambahkan event listener untuk 'scroll'
         window.addEventListener('scroll', () => {
-            // Jika posisi scroll lebih besar dari offset
             if (window.scrollY > scrollOffset) {
                 // Tampilkan tombol
                 tombolMenuPopUp.classList.remove('opacity-0', 'pointer-events-none');
@@ -399,40 +380,30 @@
             }
         });
         
-        // [BARU]: Event listener untuk BUKA modal
+        // 3. Event Listeners untuk Buka/Tutup Modal
+        
+        // Buka Modal
         if (tombolMenuPopUp) {
             tombolMenuPopUp.addEventListener('click', () => {
-                console.log('Tombol BUKA modal diklik!'); // [DEBUG]
-                if (menuPopUp) {
-                    menuPopUp.classList.remove('hidden');
-                    console.log('Modal seharusnya TAMPIL.'); // [DEBUG]
-                } else {
-                    console.error('ERROR: menuPopUp null saat diklik.'); // [DEBUG]
-                }
+                menuPopUp.classList.remove('hidden');
             });
         }
         
-        // [BARU]: Event listener untuk TUTUP modal (via tombol X)
+        // Tutup Modal (Tombol X)
         if (tutupMenuPopUp) {
             tutupMenuPopUp.addEventListener('click', () => {
-                console.log('Tombol TUTUP (X) diklik!'); // [DEBUG]
                 menuPopUp.classList.add('hidden');
             });
         }
 
-        // [BARU]: Event listener untuk TUTUP modal (via klik backdrop)
+        // Tutup Modal (Klik di luar area / Backdrop)
         if (backdropMenuPopUp) {
             backdropMenuPopUp.addEventListener('click', () => {
-                console.log('Backdrop diklik!'); // [DEBUG]
                 menuPopUp.classList.add('hidden');
             });
         }
-        
-        console.log('Script pop-up interaktif SIAP.'); // [DEBUG]
 
     </script>
 
 </body>
 </html>
-
-

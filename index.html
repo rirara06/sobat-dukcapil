@@ -39,8 +39,9 @@
 
             <!-- Kolom Kiri: Daftar Isi (Navigasi) -->
             <!-- 
-              [PERUBAHAN 1]: Saya menambahkan id="daftar-isi" di sini.
-              Ini agar tombol shortcut tahu harus scroll ke mana.
+              ID "daftar-isi" di sini tetap berguna sebagai anchor 
+              jika kita membutuhkannya, meskipun tombol shortcut
+              sekarang tidak mengarah langsung ke sini.
             -->
             <aside id="daftar-isi" class="w-full md:w-1/4">
                 <!-- 'md:sticky' membuat menu ini "mengambang" saat di-scroll di desktop -->
@@ -52,7 +53,6 @@
                     <nav class="flex flex-wrap md:flex-col gap-2">
                         <!-- 
                           Link navigasi ini akan mengarah ke ID elemen di kolom kanan.
-                          Contoh: href="#layanan-a" akan mencari elemen dengan id="layanan-a"
                         -->
                         <a href="#beranda" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
                             Beranda
@@ -198,7 +198,7 @@
                             Layanan C: Konsultasi SEO
                         </h3>
                         <p class="text-gray-700 leading-relaxed mb-4">
-                            Ini adalah deskripsi untuk layanan C. Tingkatkan visibilitas Anda di mesin pencari seperti Google. Layanan SEO kami mencakup audit komprehensif, penelitian kata kunci, optimasi on-page dan off-page, serta pembuatan tautan (link building) yang etis.
+                            Ini adalah deskripsi untuk layanan C. Tingkatkan visibilitas Anda di mesin pencari seperti Google. Layanan SEO kami mencakup audit kompreprehensif, penelitian kata kunci, optimasi on-page dan off-page, serta pembuatan tautan (link building) yang etis.
                         </p>
                         <ul class="list-disc list-inside text-gray-700 space-y-2">
                             <li>Audit SEO Teknis</li>
@@ -254,27 +254,81 @@
     </div>
 
     <!-- 
-      [PERUBAHAN 2]: Tombol Shortcut "Kembali ke Daftar Isi"
-      - 'fixed' agar tetap di posisi
-      - 'bottom-6 right-6' untuk posisi di kanan bawah
-      - 'md:hidden' agar HANYA tampil di HP (mobile)
-      - 'opacity-0' agar tersembunyi awalnya
-      - 'z-50' agar tampil di atas konten lain
+      [PERUBAHAN 1]: Tombol 'a' (anchor) diubah menjadi 'button'.
+      ID diubah menjadi 'tombolMenuPopUp'
+      Ikon diubah menjadi ikon Menu (bars-3)
+      z-index diubah menjadi z-40
     -->
-    <a href="#daftar-isi" 
-       id="tombolShortcut"
-       aria-label="Kembali ke Daftar Isi"
-       class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none md:hidden z-50">
-        <!-- Ikon Panah Atas (SVG) -->
+    <button 
+       id="tombolMenuPopUp"
+       aria-label="Buka Daftar Isi"
+       class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none md:hidden z-40">
+        <!-- Ikon Menu (Bars 3) -->
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
-    </a>
+    </button>
+
+    <!-- 
+      [PERUBAHAN 2]: Modal Pop-up Daftar Isi
+      Elemen baru ini berisi menu pop-up yang disalin dari
+      daftar isi utama.
+    -->
+    <div id="menuPopUp" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <!-- Backdrop (area gelap di belakang) -->
+        <div id="backdropMenuPopUp" class="absolute inset-0 bg-black/50"></div>
+        
+        <!-- Konten Modal -->
+        <div class="relative w-full max-w-sm bg-white p-6 rounded-lg shadow-xl">
+            <!-- Header Modal dengan Tombol Tutup -->
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h2 class="text-xl font-semibold text-gray-900">
+                    Daftar Isi
+                </h2>
+                <button id="tutupMenuPopUp" aria-label="Tutup menu" class="text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Salinan Navigasi dari <aside> -->
+            <nav class="flex flex-col gap-2">
+                <a href="#beranda" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
+                    Beranda
+                </a>
+                <a href="#layanan-a" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
+                    Cara Daftar Akun
+                </a>
+                <a href="#layanan-b" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
+                    Login ke Aplikasi Sobat Dukcapil
+                </a>
+                <a href="#layanan-c" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
+                    Jenis Layanan
+                </a>
+                <a href="#layanan-d" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
+                    Melihat Progres Pengajuan Layanan
+                </a>
+                <a href="#kontak" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
+                    Cetak Dokumen Hasil Pelayanan
+                </a>
+                <a href="#kontak" class="nav-link block w-full px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors duration-200">
+                    Kontak Kami
+                </a>
+            </nav>
+        </div>
+    </div>
 
 
     <script>
-        // Script Sederhana untuk Smooth Scrolling (walaupun 'scroll-smooth' di HTML sudah banyak membantu)
-        // Script ini memastikan kompatibilitas yang lebih baik
+        // --- [PERUBAHAN 3]: Mengambil elemen-elemen baru ---
+        const menuPopUp = document.getElementById('menuPopUp');
+        const tombolMenuPopUp = document.getElementById('tombolMenuPopUp');
+        const tutupMenuPopUp = document.getElementById('tutupMenuPopUp');
+        const backdropMenuPopUp = document.getElementById('backdropMenuPopUp');
+
+        // Script Sederhana untuk Smooth Scrolling
+        // (Sekarang juga berfungsi untuk menutup modal saat link diklik)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault(); // Mencegah "lompatan" bawaan browser
@@ -289,13 +343,15 @@
                         block: 'start' // Posisikan di awal elemen target
                     });
                 }
+
+                // [PERUBAHAN]: Saat link diklik, tutup modal jika sedang terbuka
+                if (menuPopUp && !menuPopUp.classList.contains('hidden')) {
+                    menuPopUp.classList.add('hidden');
+                }
             });
         });
 
-        // --- [PERUBAHAN 3]: Script untuk Tombol Shortcut ---
-        
-        // Ambil elemen tombol shortcut
-        const tombolShortcut = document.getElementById('tombolShortcut');
+        // --- [PERUBAHAN 4]: Script untuk Tombol Menu Pop-up ---
         
         // Ambil elemen header untuk menentukan offset (jarak scroll)
         const header = document.querySelector('header');
@@ -307,14 +363,35 @@
             // Jika posisi scroll lebih besar dari offset
             if (window.scrollY > scrollOffset) {
                 // Tampilkan tombol
-                tombolShortcut.classList.remove('opacity-0', 'pointer-events-none');
-                tombolShortcut.classList.add('opacity-100', 'pointer-events-auto');
+                tombolMenuPopUp.classList.remove('opacity-0', 'pointer-events-none');
+                tombolMenuPopUp.classList.add('opacity-100', 'pointer-events-auto');
             } else {
                 // Sembunyikan tombol
-                tombolShortcut.classList.remove('opacity-100', 'pointer-events-auto');
-                tombolShortcut.classList.add('opacity-0', 'pointer-events-none');
+                tombolMenuPopUp.classList.remove('opacity-100', 'pointer-events-auto');
+                tombolMenuPopUp.classList.add('opacity-0', 'pointer-events-none');
             }
         });
+        
+        // [BARU]: Event listener untuk BUKA modal
+        if (tombolMenuPopUp) {
+            tombolMenuPopUp.addEventListener('click', () => {
+                menuPopUp.classList.remove('hidden');
+            });
+        }
+        
+        // [BARU]: Event listener untuk TUTUP modal (via tombol X)
+        if (tutupMenuPopUp) {
+            tutupMenuPopUp.addEventListener('click', () => {
+                menuPopUp.classList.add('hidden');
+            });
+        }
+
+        // [BARU]: Event listener untuk TUTUP modal (via klik backdrop)
+        if (backdropMenuPopUp) {
+            backdropMenuPopUp.addEventListener('click', () => {
+                menuPopUp.classList.add('hidden');
+            });
+        }
         // --- Akhir Script Tombol Shortcut ---
 
     </script>

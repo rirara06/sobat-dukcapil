@@ -6,7 +6,7 @@
     <title>Panduan Sobat Dukcapil - Simple & Interaktif</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Animasi Fade In saat ganti halaman */
+        /* Animasi Fade In */
         .fade-in {
             animation: fadeIn 0.3s ease-in-out;
         }
@@ -15,34 +15,19 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Custom Scrollbar untuk konten */
-        .custom-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scroll::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-        }
-        .custom-scroll::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 3px;
-        }
-        .custom-scroll::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
-        }
-        
-        /* Hide helper */
-        .hidden-force {
-            display: none !important;
-        }
+        /* Custom Scrollbar */
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-800 h-screen flex flex-col overflow-hidden">
 
-    <!-- HEADER (Fixed) -->
+    <!-- HEADER -->
     <header class="bg-white shadow-sm z-20 flex-none">
         <div class="container mx-auto max-w-7xl px-4 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <!-- Logo Placeholder (Optional) -->
                 <div class="bg-blue-600 text-white p-2 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -53,12 +38,8 @@
                     <p class="text-xs text-gray-500 mt-1">Kota Tangerang</p>
                 </div>
             </div>
-            
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
             </button>
         </div>
     </header>
@@ -66,46 +47,25 @@
     <!-- MAIN LAYOUT -->
     <div class="flex flex-1 overflow-hidden container mx-auto max-w-7xl p-4 gap-6 relative">
         
-        <!-- SIDEBAR (Navigation) -->
-        <aside id="sidebar" class="bg-white w-64 flex-none rounded-xl shadow-lg border border-gray-100 overflow-y-auto hidden md:block absolute md:relative z-10 h-full md:h-auto inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="bg-white w-64 flex-none rounded-xl shadow-lg border border-gray-100 overflow-y-auto hidden md:block absolute md:relative z-10 h-full inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
             <div class="p-4">
                 <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Daftar Isi</h2>
                 <nav class="space-y-1">
-                    <button onclick="showTab('beranda')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors bg-blue-50 text-blue-700" id="nav-beranda">
-                        🏠 Beranda
-                    </button>
-                    <button onclick="showTab('cara-daftar')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors" id="nav-cara-daftar">
-                        📝 Cara Daftar Akun
-                    </button>
-                    <button onclick="showTab('login')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors" id="nav-login">
-                        🔐 Login Aplikasi
-                    </button>
-                    <button onclick="showTab('jenis-layanan')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors" id="nav-jenis-layanan">
-                        📋 Jenis Layanan
-                    </button>
-                    <button onclick="showTab('pengajuan')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors" id="nav-pengajuan">
-                        📱 Cara Pengajuan
-                    </button>
-                    <button onclick="showTab('progres')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors" id="nav-progres">
-                        📊 Melihat Progres
-                    </button>
-                    <button onclick="showTab('cetak')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors" id="nav-cetak">
-                        🖨️ Cetak Dokumen
-                    </button>
-                    <button onclick="showTab('kontak')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 transition-colors" id="nav-kontak">
-                        📞 Kontak Kami
-                    </button>
+                    <button onclick="showTab('beranda')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium bg-blue-50 text-blue-700" id="nav-beranda">🏠 Beranda</button>
+                    <button onclick="showTab('cara-daftar')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600" id="nav-cara-daftar">📝 Cara Daftar Akun</button>
+                    <button onclick="showTab('login')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600" id="nav-login">🔐 Login Aplikasi</button>
+                    <button onclick="showTab('jenis-layanan')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600" id="nav-jenis-layanan">📋 Jenis Layanan</button>
+                    <button onclick="showTab('pengajuan')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600" id="nav-pengajuan">📱 Cara Pengajuan</button>
+                    <button onclick="showTab('progres')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600" id="nav-progres">📊 Melihat Progres</button>
+                    <button onclick="showTab('cetak')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600" id="nav-cetak">🖨️ Cetak Dokumen</button>
+                    <button onclick="showTab('kontak')" class="nav-item w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600" id="nav-kontak">📞 Kontak Kami</button>
                 </nav>
             </div>
-            <!-- Close button for mobile -->
-            <button id="close-sidebar-btn" class="md:hidden absolute top-4 right-4 text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
+            <button id="close-sidebar-btn" class="md:hidden absolute top-4 right-4 text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
         </aside>
 
-        <!-- MAIN CONTENT AREA -->
+        <!-- MAIN CONTENT -->
         <main class="flex-1 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden relative">
             <div id="content-container" class="h-full overflow-y-auto custom-scroll p-6 md:p-10">
                 
@@ -113,90 +73,102 @@
                 <section id="beranda" class="tab-content fade-in">
                     <div class="text-center mb-8">
                         <h2 class="text-3xl font-bold text-gray-800 mb-4">Selamat Datang di Panduan Sobat Dukcapil</h2>
-                        <p class="text-gray-600 max-w-2xl mx-auto">
-                            Solusi terpadu layanan administrasi kependudukan Kota Tangerang dalam genggaman Anda.
-                        </p>
+                        <p class="text-gray-600 max-w-2xl mx-auto">Solusi terpadu layanan administrasi kependudukan Kota Tangerang dalam genggaman Anda.</p>
                     </div>
                     <div class="grid md:grid-cols-2 gap-8 items-center">
                         <div>
-                            <img src="https://raw.githubusercontent.com/rirara06/sobat-dukcapil/main/halaman%20sobat.JPG" 
-                                 class="w-full rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-                                 alt="Banner Sobat Dukcapil"
-                                 onerror="this.src='https://placehold.co/600x400?text=Dashboard+Aplikasi'">
+                            <img src="https://raw.githubusercontent.com/rirara06/sobat-dukcapil/main/halaman%20sobat.JPG" class="w-full rounded-lg shadow-md" alt="Banner" onerror="this.src='https://placehold.co/600x400?text=Banner+App'">
                         </div>
                         <div class="space-y-4 text-gray-700 leading-relaxed text-justify">
-                            <p>
-                                <strong>Dinas Kependudukan dan Pencatatan Sipil Kota Tangerang</strong> telah mengembangkan versi terbaru aplikasi Sobat Dukcapil.
-                            </p>
-                            <p>
-                                Kami memahami kesibukan Anda. Kini, urusan dokumen kependudukan (KK, KTP, Akta) lebih mudah dan cepat, bisa dilakukan <strong>kapan saja dan di mana saja</strong> melalui smartphone, tanpa perlu antre di kantor dinas.
-                            </p>
-                            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 mt-4">
-                                <p class="text-sm text-blue-800 font-semibold">
-                                    💡 Gunakan menu di sebelah kiri (PC/laptop) atau klik garis 3 panduan sobat dukcapil (HP) untuk mempelajari cara menggunakan aplikasi langkah demi langkah.
-                                </p>
+                            <p><strong>Dinas Kependudukan dan Pencatatan Sipil (Disdukcapil)</strong> mempersembahkan versi terbaru aplikasi Sobat Dukcapil.</p>
+                            <p>Kami memahami kesibukan Anda. Kini, urusan dokumen kependudukan (KK, KTP, Akta) bisa dilakukan <strong>kapan saja dan di mana saja</strong> melalui smartphone.</p>
+                            
+                            <!-- ALERT BOX -->
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg shadow-sm mt-6">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-xl mt-0.5">💡</span>
+                                    <p class="text-sm text-blue-900 font-medium leading-relaxed">
+                                        Gunakan menu di sebelah kiri (PC/laptop) atau klik garis 3 panduan sobat dukcapil (HP) untuk mempelajari cara menggunakan aplikasi langkah demi langkah.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 2. CARA DAFTAR (UPDATED) -->
+                <!-- 2. CARA DAFTAR -->
                 <section id="cara-daftar" class="tab-content hidden fade-in">
                     <h2 class="text-2xl font-bold text-blue-600 mb-6 border-b pb-2">Cara Daftar Akun</h2>
                     
-                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6 flex gap-3 items-start">
-                        <span class="text-2xl">ℹ️</span>
-                        <div>
-                            <h4 class="font-bold text-yellow-800">Sudah punya akun Tangerang LIVE?</h4>
-                            <p class="text-sm text-yellow-700 mt-1">Anda <strong>TIDAK PERLU</strong> mendaftar ulang. Gunakan NIK dan Password Tangerang LIVE Anda untuk login.</p>
+                    <!-- Kotak Peringatan/Info -->
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-5 mb-8 flex gap-4 items-start shadow-sm">
+                        <div class="bg-blue-600 text-white rounded-md w-8 h-8 flex items-center justify-center flex-shrink-0 font-serif font-bold italic text-lg">i</div>
+                        <div class="text-sm text-gray-700">
+                            <h4 class="font-bold text-base mb-1 text-yellow-800">Sudah punya akun Tangerang LIVE?</h4>
+                            <p>Anda <strong class="text-red-600">TIDAK PERLU</strong> mendaftar ulang. Gunakan NIK dan Password Tangerang LIVE Anda untuk login.</p>
+                            <p class="mt-1">Jika belum, <strong class="text-gray-900">ANDA PERLU</strong> melakukan registrasi. berikut langkahnya :</p>
                         </div>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <ol class="relative border-l border-gray-200 ml-3 space-y-8 mb-8">                  
-                                <li class="mb-10 ml-6">
-                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full -left-4 ring-4 ring-white text-blue-600 font-bold">1</span>
-                                    <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Akses Aplikasi & Klik "Daftar"</h3>
-                                    <p class="mb-4 text-base font-normal text-gray-500">Buka aplikasi Sobat Dukcapil atau akses <a href="https://sobatdukcapil.tangerangkota.go.id/login" target="_blank" class="text-blue-600 hover:underline">sobatdukcapil.tangerangkota.go.id</a>. Pada halaman login, temukan dan klik tombol <strong>"Daftar"</strong>.</p>
-                                </li>
-                                <li class="mb-10 ml-6">
-                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full -left-4 ring-4 ring-white text-blue-600 font-bold">2</span>
-                                    <h3 class="mb-1 text-lg font-semibold text-gray-900">Isi Formulir Registrasi</h3>
-                                    <p class="text-base font-normal text-gray-500">Anda akan diarahkan ke halaman pendaftaran. Masukkan <strong>NIK, Email aktif, Nomor HP</strong> yang bisa dihubungi, dan buat <strong>Password</strong> baru.</p>
-                                </li>
-                                <li class="ml-6">
-                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full -left-4 ring-4 ring-white text-blue-600 font-bold">3</span>
-                                    <h3 class="mb-1 text-lg font-semibold text-gray-900">Verifikasi Wajah & KTP-el</h3>
-                                    <p class="text-base font-normal text-gray-500">Upload foto KTP-el Anda dan lakukan swafoto (selfie) sambil memegang KTP. Ini penting untuk validasi identitas. Mohon tunggu proses verifikasi admin, biasanya 1x24 jam.</p>
-                                </li>
-                            </ol>
+                    <div class="grid lg:grid-cols-2 gap-10">
+                        <!-- Kolom Kiri: Langkah-langkah -->
+                        <div class="space-y-8">
+                            <!-- Langkah 1 -->
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold shadow-sm text-sm">1</div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 text-lg mb-2">Akses Aplikasi & Klik "Daftar"</h3>
+                                    <p class="text-gray-600 leading-relaxed text-sm">
+                                        Buka aplikasi Sobat Dukcapil atau akses 
+                                        <a href="https://sobatdukcapil.tangerangkota.go.id" target="_blank" class="text-blue-600 hover:underline">sobatdukcapil.tangerangkota.go.id</a>. 
+                                        Pada halaman login, temukan dan klik tombol <strong>"Daftar"</strong>.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Langkah 2 -->
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold shadow-sm text-sm">2</div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 text-lg mb-2">Isi Formulir Registrasi</h3>
+                                    <p class="text-gray-600 leading-relaxed text-sm">
+                                        Anda akan diarahkan ke halaman pendaftaran. Masukkan <strong>NIK, Email aktif, Nomor HP</strong> yang bisa dihubungi, dan buat <strong>Password</strong> baru.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Langkah 3 -->
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold shadow-sm text-sm">3</div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 text-lg mb-2">Verifikasi Wajah & KTP-el</h3>
+                                    <p class="text-gray-600 leading-relaxed text-sm">
+                                        Upload foto KTP-el Anda dan lakukan swafoto (selfie) sambil memegang KTP. Ini penting untuk validasi identitas. Mohon tunggu proses verifikasi admin maksimal 1x24 jam.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <!-- Kolom Kanan: Dua Gambar Ilustrasi -->
-                        <div class="flex flex-col gap-8">
-                            <!-- Gambar 1: Halaman Login dengan tombol daftar -->
+
+                        <!-- Kolom Kanan: Gambar -->
+                        <div class="space-y-6">
+                            <!-- Gambar Login -->
                             <figure class="bg-white p-2 rounded-xl shadow-md border border-gray-200">
                                 <img src="https://raw.githubusercontent.com/rirara06/sobat-dukcapil/f9dfac9e68963d86270fe31c8968a636cddcff1f/halaman%20login.JPG" 
                                      class="w-full h-auto rounded-lg object-cover border border-gray-100"
-                                     alt="Halaman Login Sobat Dukcapil dengan tombol Daftar"
-                                     onerror="this.src='https://placehold.co/400x600?text=Halaman+Login'">
-                                <figcaption class="mt-3 p-3 bg-blue-50 rounded-lg text-sm text-gray-600 border-l-4 border-blue-400">
+                                     alt="Tampilan Halaman Login"
+                                     onerror="this.src='https://placehold.co/600x350?text=Halaman+Login'">
+                                <figcaption class="mt-3 p-3 bg-blue-50 rounded-lg text-sm text-gray-600 border-l-4 border-blue-500">
                                     <strong>Gambar 1: Halaman Login</strong><br>
                                     Cari dan klik tombol "Daftar" (biasanya di bagian bawah form login) untuk memulai proses pendaftaran akun baru.
                                 </figcaption>
                             </figure>
-
-                            <!-- Gambar 2: Halaman Registrasi (Formulir) -->
-                            <figure class="bg-white p-2 rounded-xl shadow-md border border-gray-200">
+                            
+                            <!-- Gambar Registrasi -->
+                             <figure class="bg-white p-2 rounded-xl shadow-md border border-gray-200">
                                 <img src="https://raw.githubusercontent.com/rirara06/sobat-dukcapil/main/halaman%20registrasi.JPG" 
                                      class="w-full h-auto rounded-lg object-cover border border-gray-100"
-                                     alt="Formulir Pendaftaran Akun Sobat Dukcapil"
-                                     onerror="this.src='https://placehold.co/400x600?text=Formulir+Registrasi'">
-                                <figcaption class="mt-3 p-3 bg-blue-50 rounded-lg text-sm text-gray-600 border-l-4 border-blue-400">
-                                    <strong>Gambar 2: Formulir Registrasi</strong><br>
-                                    Isi data pribadi Anda dengan lengkap dan benar pada formulir ini. Pastikan email dan nomor HP aktif.
-                                </figcaption>
+                                     alt="Tampilan Form Registrasi"
+                                     onerror="this.src='https://placehold.co/600x350?text=Form+Registrasi'">
                             </figure>
                         </div>
                     </div>
@@ -205,38 +177,51 @@
                 <!-- 3. LOGIN -->
                 <section id="login" class="tab-content hidden fade-in">
                     <h2 class="text-2xl font-bold text-blue-600 mb-6 border-b pb-2">Login Aplikasi</h2>
-                    <div class="flex flex-col md:flex-row items-center gap-8">
-                        <div class="flex-1">
-                            <p class="text-gray-700 mb-4 text-lg">Setelah akun terverifikasi, langkah login sangat mudah:</p>
-                            <ul class="space-y-4">
-                                <li class="flex items-center bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-                                    <span class="text-2xl mr-4">👤</span>
-                                    <div>
-                                        <strong class="block text-gray-800">Masukkan NIK</strong>
-                                        <span class="text-sm text-gray-500">Gunakan 16 digit NIK KTP Anda.</span>
-                                    </div>
-                                </li>
-                                <li class="flex items-center bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-                                    <span class="text-2xl mr-4">🔑</span>
-                                    <div>
-                                        <strong class="block text-gray-800">Masukkan Password</strong>
-                                        <span class="text-sm text-gray-500">Password yang Anda buat saat daftar atau password Tangerang LIVE.</span>
-                                    </div>
-                                </li>
-                                <li class="flex items-center bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-                                    <span class="text-2xl mr-4">🚀</span>
-                                    <div>
-                                        <strong class="block text-gray-800">Klik Masuk</strong>
-                                        <span class="text-sm text-gray-500">Anda akan diarahkan ke Dashboard layanan.</span>
-                                    </div>
-                                </li>
-                            </ul>
+                    <p class="text-gray-600 mb-6">Setelah akun terverifikasi, langkah login sangat mudah:</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Kolom Kiri: Steps with Icons -->
+                        <div class="space-y-4">
+                            <!-- Step 1: Masukkan NIK -->
+                            <div class="flex items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-blue-300 transition">
+                                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-3xl text-gray-700 mr-4">
+                                    👤
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 text-lg">Masukkan NIK</h3>
+                                    <p class="text-gray-500 text-sm">Gunakan 16 digit NIK KTP Anda.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Masukkan Password -->
+                            <div class="flex items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-blue-300 transition">
+                                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-3xl text-gray-700 mr-4">
+                                    🔑
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 text-lg">Masukkan Password</h3>
+                                    <p class="text-gray-500 text-sm">Password yang Anda buat saat daftar atau password Tangerang LIVE.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Klik Login -->
+                            <div class="flex items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-blue-300 transition">
+                                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center text-3xl text-gray-700 mr-4">
+                                    🚀
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 text-lg">Klik "Login"</h3>
+                                    <p class="text-gray-500 text-sm">Anda akan diarahkan ke Dashboard layanan.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="w-full md:w-1/3">
+
+                        <!-- Kolom Kanan: Gambar Login -->
+                        <div class="flex items-center justify-center">
                              <img src="https://raw.githubusercontent.com/rirara06/sobat-dukcapil/f9dfac9e68963d86270fe31c8968a636cddcff1f/halaman%20login.JPG" 
-                                 class="rounded-xl shadow-lg border border-gray-200 w-full"
+                                 class="rounded-xl shadow-lg border border-gray-200 w-full object-cover"
                                  alt="Halaman Login"
-                                 onerror="this.src='https://placehold.co/400x600?text=Login+Screen'">
+                                 onerror="this.src='https://placehold.co/500x300?text=Tampilan+Login'">
                         </div>
                     </div>
                 </section>
@@ -245,184 +230,440 @@
                 <section id="jenis-layanan" class="tab-content hidden fade-in">
                     <h2 class="text-2xl font-bold text-blue-600 mb-6 border-b pb-2">Jenis Layanan Tersedia</h2>
                     <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Card Pencatatan Sipil -->
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-blue-100 hover:shadow-lg transition">
+                        
+                        <!-- Pencatatan Sipil Card -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 flex flex-col">
                             <div class="bg-blue-600 p-4">
                                 <h3 class="text-white font-bold text-lg flex items-center gap-2">
                                     📜 Pencatatan Sipil
                                 </h3>
                             </div>
-                            <div class="p-6">
-                                <ul class="space-y-2 text-gray-700">
-                                    <li>✅ Akta Kelahiran</li>
-                                    <li>✅ Akta Kematian</li>
-                                    <li>✅ Akta Perkawinan (Non-Muslim)</li>
-                                    <li>✅ Akta Perceraian</li>
-                                    <li>✅ Surat Keterangan Belum Menikah</li>
-                                    <li>✅ Kutipan Ke-2 (Akta Hilang/Rusak)</li>
-                                    <li>✅ Perbaikan Data Akta</li>
+                            <div class="p-6 flex-1">
+                                <ul class="space-y-3 text-gray-700 font-medium">
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Akta Kelahiran</li>
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Akta Kematian</li>
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Akta Perkawinan</li>
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Akta Perceraian</li>
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Surat Keterangan Single</li>
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Kutipan Ke-2 Akta Kelahiran</li>
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Perbaikan Akta Kelahiran</li>
                                 </ul>
                             </div>
                         </div>
 
-                        <!-- Card Kependudukan -->
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-green-100 hover:shadow-lg transition">
+                        <!-- Pendaftaran Penduduk Card -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 flex flex-col">
                             <div class="bg-green-600 p-4">
                                 <h3 class="text-white font-bold text-lg flex items-center gap-2">
                                     🪪 Pendaftaran Penduduk
                                 </h3>
                             </div>
-                            <div class="p-6">
-                                <ul class="space-y-2 text-gray-700">
-                                    <li>✅ KTP Elektronik (Hilang/Rusak/Ubah Data)</li>
-                                    <li>✅ Kartu Identitas Anak (KIA)</li>
-                                    <li>✅ Kartu Keluarga (KK)</li>
-                                    <li>✅ Perpindahan Penduduk (Masuk/Keluar)</li>
-                                    <li>✅ SKTT (Warga Negara Asing)</li>
+                            <div class="p-6 flex-1">
+                                <ul class="space-y-3 text-gray-700 font-medium">
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> KTP Elektronik</li>
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Kartu Identitas Anak (KIA)</li>
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Kartu Keluarga (KK)</li>
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Pindah Datang</li>
+                                    <li class="flex items-center gap-2"><div class="bg-green-600 rounded-sm p-0.5"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> SKTT (Warga Negara Asing)</li>
                                 </ul>
                             </div>
                         </div>
+
                     </div>
                 </section>
 
-                <!-- 5. CARA PENGAJUAN (MASTER-DETAIL) -->
+                <!-- 5. PANDUAN PENGAJUAN -->
                 <section id="pengajuan" class="tab-content hidden fade-in">
-                    <!-- VIEW 1: LIST LAYANAN (MASTER) -->
+                    
+                    <!-- VIEW LIST LAYANAN (MENU) -->
                     <div id="layanan-list-view">
-                        <h2 class="text-2xl font-bold text-blue-600 mb-2">Cara Pengajuan Layanan</h2>
-                        <p class="text-gray-600 mb-6">Pilih layanan yang ingin Anda ajukan untuk melihat persyaratan dan panduannya.</p>
+                        <div class="mb-6">
+                            <h2 class="text-2xl font-bold text-blue-600 mb-2">Cara Pengajuan Layanan</h2>
+                            <p class="text-gray-600">Pilih layanan yang ingin Anda ajukan untuk melihat persyaratan dan panduannya.</p>
+                        </div>
 
-                        <div class="space-y-6">
-                            <!-- Kategori A -->
-                            <div>
-                                <h3 class="text-lg font-bold text-gray-800 mb-3 bg-gray-100 p-2 rounded-lg border-l-4 border-blue-500">A. Pencatatan Sipil</h3>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                                    <button onclick="openDetail('akta-lahir')" class="p-4 text-left bg-white border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:shadow-md transition group">
-                                        <span class="block text-sm font-bold text-gray-700 group-hover:text-blue-700">📄 Akta Kelahiran</span>
-                                        <span class="text-xs text-gray-500 mt-1 block">Baru lahir / Terlambat lapor</span>
-                                    </button>
-                                    <button onclick="openDetail('akta-mati')" class="p-4 text-left bg-white border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:shadow-md transition group">
-                                        <span class="block text-sm font-bold text-gray-700 group-hover:text-blue-700">📄 Akta Kematian</span>
-                                        <span class="text-xs text-gray-500 mt-1 block">Pelaporan kematian</span>
-                                    </button>
-                                    <button onclick="openDetail('akta-kawin')" class="p-4 text-left bg-white border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:shadow-md transition group">
-                                        <span class="block text-sm font-bold text-gray-700 group-hover:text-blue-700">📄 Akta Perkawinan</span>
-                                        <span class="text-xs text-gray-500 mt-1 block">Non-Muslim</span>
-                                    </button>
-                                    <button onclick="openDetail('akta-cerai')" class="p-4 text-left bg-white border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:shadow-md transition group">
-                                        <span class="block text-sm font-bold text-gray-700 group-hover:text-blue-700">📄 Akta Perceraian</span>
-                                        <span class="text-xs text-gray-500 mt-1 block">Berdasarkan putusan pengadilan</span>
-                                    </button>
-                                    <button onclick="openDetail('kutipan2')" class="p-4 text-left bg-white border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:shadow-md transition group">
-                                        <span class="block text-sm font-bold text-gray-700 group-hover:text-blue-700">📄 Kutipan Ke-2</span>
-                                        <span class="text-xs text-gray-500 mt-1 block">Akta Hilang / Rusak</span>
-                                    </button>
-                                    <button onclick="openDetail('perbaikan')" class="p-4 text-left bg-white border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:shadow-md transition group">
-                                        <span class="block text-sm font-bold text-gray-700 group-hover:text-blue-700">📄 Perbaikan Akta</span>
-                                        <span class="text-xs text-gray-500 mt-1 block">Revisi data salah</span>
-                                    </button>
-                                </div>
+                        <!-- A. PENCATATAN SIPIL -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                <span class="w-1.5 h-8 bg-blue-600 mr-3 rounded-full"></span>
+                                A. Pencatatan Sipil
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                
+                                <button onclick="openStaticDetail('detail-akta-lahir')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-blue-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">📄</span><h4 class="font-bold text-gray-800 group-hover:text-blue-600">Akta Kelahiran</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Sudah memiliki NIK / Kurang dari 1 (satu) tahun belum memiliki NIK / Lebih dari 1 (satu) tahun belum memiliki NIK</p>
+                                </button>
+
+                                <button onclick="openStaticDetail('detail-akta-mati')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-blue-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">📄</span><h4 class="font-bold text-gray-800 group-hover:text-blue-600">Akta Kematian</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Pembuatan baru</p>
+                                </button>
+
+                                <button onclick="openStaticDetail('detail-akta-kawin')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-blue-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">📄</span><h4 class="font-bold text-gray-800 group-hover:text-blue-600">Akta Perkawinan</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Pembuatan baru bagi Non-Muslim</p>
+                                </button>
+
+                                <button onclick="openStaticDetail('detail-akta-cerai')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-blue-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">📄</span><h4 class="font-bold text-gray-800 group-hover:text-blue-600">Akta Perceraian</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Pembuatan baru bagi Non-Muslim</p>
+                                </button>
+
+                                <button onclick="openStaticDetail('detail-kutipan2')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-blue-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">📄</span><h4 class="font-bold text-gray-800 group-hover:text-blue-600">Kutipan Ke-2 Akta Kelahiran</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Hilang / Rusak</p>
+                                </button>
+
+                                <button onclick="openStaticDetail('detail-perbaikan')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-blue-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">📄</span><h4 class="font-bold text-gray-800 group-hover:text-blue-600">Perbaikan Akta</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Revisi data salah</p>
+                                </button>
+
+                                <button onclick="openStaticDetail('detail-sk-single')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-blue-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">📄</span><h4 class="font-bold text-gray-800 group-hover:text-blue-600">Surat Keterangan Single</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Belum pernah menikah</p>
+                                </button>
+
                             </div>
+                        </div>
 
-                            <!-- Kategori B -->
-                            <div>
-                                <h3 class="text-lg font-bold text-gray-800 mb-3 bg-gray-100 p-2 rounded-lg border-l-4 border-green-500">B. Kependudukan</h3>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                                    <button onclick="openDetail('kk')" class="p-4 text-left bg-white border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-300 hover:shadow-md transition group">
-                                        <span class="block text-sm font-bold text-gray-700 group-hover:text-green-700">🪪 Kartu Keluarga (KK)</span>
-                                        <span class="text-xs text-gray-500 mt-1 block">Tambah/Kurang Anggota/Hilang</span>
-                                    </button>
-                                    <button onclick="openDetail('ktp')" class="p-4 text-left bg-white border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-300 hover:shadow-md transition group">
-                                        <span class="block text-sm font-bold text-gray-700 group-hover:text-green-700">🪪 KTP-el</span>
-                                        <span class="text-xs text-gray-500 mt-1 block">Cetak Ulang / Ganti Data</span>
-                                    </button>
-                                    <button onclick="openDetail('kia')" class="p-4 text-left bg-white border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-300 hover:shadow-md transition group">
-                                        <span class="block text-sm font-bold text-gray-700 group-hover:text-green-700">🪪 KIA</span>
-                                        <span class="text-xs text-gray-500 mt-1 block">Kartu Identitas Anak</span>
-                                    </button>
-                                    <button onclick="openDetail('pindah')" class="p-4 text-left bg-white border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-300 hover:shadow-md transition group">
-                                        <span class="block text-sm font-bold text-gray-700 group-hover:text-green-700">🚚 Pindah Datang</span>
-                                        <span class="text-xs text-gray-500 mt-1 block">Dalam/Luar Kota</span>
-                                    </button>
-                                </div>
+                        <!-- B. KEPENDUDUKAN -->
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                                <span class="w-1.5 h-8 bg-green-600 mr-3 rounded-full"></span>
+                                B. Kependudukan
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                
+                                <button onclick="openStaticDetail('detail-kk')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-green-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">🪪</span><h4 class="font-bold text-gray-800 group-hover:text-green-600">Kartu Keluarga (KK)</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Tambah/Kurang Anggota/Hilang</p>
+                                </button>
+
+                                <button onclick="openStaticDetail('detail-ktp')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-green-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">🪪</span><h4 class="font-bold text-gray-800 group-hover:text-green-600">KTP-el</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Cetak Ulang / Ganti Data</p>
+                                </button>
+
+                                <button onclick="openStaticDetail('detail-kia')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-green-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">🪪</span><h4 class="font-bold text-gray-800 group-hover:text-green-600">KIA</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Kartu Identitas Anak</p>
+                                </button>
+
+                                <button onclick="openStaticDetail('detail-pindah')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-green-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">🚚</span><h4 class="font-bold text-gray-800 group-hover:text-green-600">Pindah Datang</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Dalam/Luar Kota</p>
+                                </button>
+
+                                <button onclick="openStaticDetail('detail-sktt')" class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-green-400 transition text-left group">
+                                    <div class="flex items-center gap-2 mb-2"><span class="text-2xl">🌍</span><h4 class="font-bold text-gray-800 group-hover:text-green-600">SKTT</h4></div>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Warga Negara Asing</p>
+                                </button>
+
                             </div>
                         </div>
                     </div>
 
-                    <!-- VIEW 2: DETAIL LAYANAN (HIDDEN DEFAULT) -->
-                    <div id="layanan-detail-view" class="hidden">
-                        <button onclick="closeDetail()" class="mb-4 flex items-center text-sm text-gray-500 hover:text-blue-600 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                            </svg>
+                    <!-- AREA DETAIL LAYANAN (HTML STATIS) -->
+                    <div id="detail-container" class="hidden">
+                        <button onclick="closeStaticDetail()" class="mb-4 flex items-center text-sm text-gray-500 hover:text-blue-600 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
                             Kembali ke Daftar Layanan
                         </button>
 
-                        <!-- Dynamic Content Area -->
-                        <div id="detail-content-placeholder" class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-                            <!-- Konten akan diinject via Javascript -->
+                        <!-- 1. DETAIL AKTA KELAHIRAN -->
+                        <div id="detail-akta-lahir" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Layanan Akta Kelahiran</h3>
+                            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-akta-lahir', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-akta-lahir', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-akta-lahir" class="internal-content">
+                                <p class="text-gray-600 mb-4">Dokumen yang harus disiapkan (Format JPG/PDF):</p>
+                                <ul class="space-y-2 mb-6">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Surat Keterangan Lahir dari RS/Bidan (Asli)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Buku Nikah Orang Tua (Asli/Legalisir)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Kartu Keluarga (KK) Asli</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ KTP-el Orang Tua & 2 Orang Saksi</li>
+                                </ul>
+                                <div class="flex flex-col gap-4">
+                                     <img src="https://placehold.co/600x300?text=Contoh+Dokumen+Lahir" class="w-full rounded-lg border" alt="Ilustrasi Dokumen">
+                                     <p class="text-sm text-gray-500 italic">Contoh dokumen yang diperlukan. Pastikan hasil scan jelas.</p>
+                                </div>
+                            </div>
+                            <div id="panduan-akta-lahir" class="internal-content hidden">
+                                <p class="text-gray-600 mb-4">Panduan langkah demi langkah pengajuan Akta Kelahiran:</p>
+                                <ol class="space-y-6 border-l-2 border-blue-100 ml-3 pl-4">
+                                    <li>
+                                        <h4 class="font-bold text-blue-700">1. Pilih Menu</h4>
+                                        <p class="text-sm text-gray-600 mb-2">Masuk ke dashboard, pilih "Pencatatan Sipil" lalu "Akta Kelahiran".</p>
+                                        <img src="https://placehold.co/500x300?text=Menu+Akta+Kelahiran" class="rounded shadow-sm w-full md:w-2/3">
+                                    </li>
+                                    <li>
+                                        <h4 class="font-bold text-blue-700">2. Isi Formulir</h4>
+                                        <p class="text-sm text-gray-600">Lengkapi data bayi (nama, tempat tgl lahir, berat, dll) dan data orang tua.</p>
+                                    </li>
+                                    <li>
+                                        <h4 class="font-bold text-blue-700">3. Upload Berkas</h4>
+                                        <p class="text-sm text-gray-600">Unggah semua persyaratan yang diminta. Klik "Kirim Permohonan".</p>
+                                    </li>
+                                </ol>
+                            </div>
                         </div>
+
+                        <!-- 2. DETAIL AKTA KEMATIAN -->
+                        <div id="detail-akta-mati" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Layanan Akta Kematian</h3>
+                            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-akta-mati', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-akta-mati', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-akta-mati" class="internal-content">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Surat Keterangan Kematian (RS/Kelurahan)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ KK Jenazah & KTP Jenazah (Jika ada)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ KTP Pelapor & Saksi</li>
+                                </ul>
+                                <p class="text-sm text-gray-500 mt-2">Pastikan surat keterangan kematian dari dokter/lurah asli.</p>
+                            </div>
+                            <div id="panduan-akta-mati" class="internal-content hidden">
+                                <ol class="space-y-4 list-decimal ml-5 text-gray-700">
+                                    <li>Buka menu <strong>Akta Kematian</strong>.</li>
+                                    <li>Isi data jenazah (NIK, Nama, Tanggal Meninggal).</li>
+                                    <li>Isi data pelapor dan saksi.</li>
+                                    <li>Upload dokumen pendukung.</li>
+                                    <li>Klik Kirim.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <!-- 3. DETAIL AKTA PERKAWINAN -->
+                        <div id="detail-akta-kawin" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Akta Perkawinan (Non-Muslim)</h3>
+                            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-akta-kawin', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-akta-kawin', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-akta-kawin" class="internal-content">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Surat Pemberkatan Agama</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ KTP & KK Suami Istri</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Pas Foto Berdampingan</li>
+                                </ul>
+                            </div>
+                            <div id="panduan-akta-kawin" class="internal-content hidden">
+                                <p>Isi data mempelai pria dan wanita, upload bukti pemberkatan, dan tentukan jadwal pencatatan sipil.</p>
+                            </div>
+                        </div>
+
+                         <!-- 4. DETAIL AKTA PERCERAIAN -->
+                        <div id="detail-akta-cerai" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Akta Perceraian</h3>
+                             <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-akta-cerai', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-akta-cerai', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-akta-cerai" class="internal-content">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Salinan Putusan Pengadilan (Inkrah)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Kutipan Akta Perkawinan Asli</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ KTP & KK Pelapor</li>
+                                </ul>
+                            </div>
+                            <div id="panduan-akta-cerai" class="internal-content hidden">
+                                <p>Upload putusan pengadilan dan akta perkawinan asli yang akan ditarik.</p>
+                            </div>
+                        </div>
+
+                        <!-- 5. DETAIL KUTIPAN KE-2 -->
+                        <div id="detail-kutipan2" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Kutipan Akta Ke-2</h3>
+                            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-kutipan2', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-kutipan2', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-kutipan2" class="internal-content">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Surat Kehilangan Kepolisian (Jika Hilang)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Foto Akta Fisik (Jika Rusak)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ KTP & KK Pemohon</li>
+                                </ul>
+                            </div>
+                            <div id="panduan-kutipan2" class="internal-content hidden">
+                                <p>Pilih alasan permohonan (Hilang/Rusak) lalu upload bukti sesuai alasan.</p>
+                            </div>
+                        </div>
+
+                        <!-- 6. DETAIL PERBAIKAN -->
+                        <div id="detail-perbaikan" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Perbaikan Data Akta</h3>
+                            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-perbaikan', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-perbaikan', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-perbaikan" class="internal-content">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Dokumen Pendukung (Ijazah/Buku Nikah/Paspor)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Penetapan Pengadilan (Jika ganti nama/jenis kelamin)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Akta Lama Asli</li>
+                                </ul>
+                            </div>
+                            <div id="panduan-perbaikan" class="internal-content hidden">
+                                <p>Upload dokumen pendukung yang menunjukkan data yang benar dan akta lama yang salah.</p>
+                            </div>
+                        </div>
+
+                        <!-- 7. DETAIL SK SINGLE -->
+                         <div id="detail-sk-single" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Surat Keterangan Belum Menikah</h3>
+                            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-sk-single', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-sk-single', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-sk-single" class="internal-content">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Surat Pengantar RT/RW</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ KTP & KK</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Surat Pernyataan Belum Pernah Menikah (Materai 10.000)</li>
+                                </ul>
+                            </div>
+                            <div id="panduan-sk-single" class="internal-content hidden">
+                                <p>Isi formulir permohonan dan upload surat pernyataan bermaterai.</p>
+                            </div>
+                        </div>
+
+
+                        <!-- 8. DETAIL KK -->
+                        <div id="detail-kk" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Kartu Keluarga (KK)</h3>
+                            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-kk', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-kk', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-kk" class="internal-content">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ KK Lama (Asli)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Buku Nikah (Jika status berubah kawin/cerai)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Surat Lahir (Jika tambah anak)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Surat Pindah (Jika anggota baru datang)</li>
+                                </ul>
+                            </div>
+                            <div id="panduan-kk" class="internal-content hidden">
+                                <p>Pilih jenis layanan KK yang diinginkan (Tambah Anggota / Pecah KK / Hilang / Perubahan Data), lalu upload dokumen pendukung.</p>
+                            </div>
+                        </div>
+
+                        <!-- 9. DETAIL KTP -->
+                        <div id="detail-ktp" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">KTP Elektronik</h3>
+                            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-ktp', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-ktp', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-ktp" class="internal-content">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Kartu Keluarga Terbaru</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Surat Kehilangan Kepolisian (Jika Hilang)</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Foto KTP Rusak (Jika Rusak)</li>
+                                </ul>
+                                <p class="text-sm text-gray-500 mt-2 italic">Untuk KTP Pemula (baru 17 tahun), wajib melakukan perekaman biometrik di Kecamatan/Dinas terlebih dahulu.</p>
+                            </div>
+                            <div id="panduan-ktp" class="internal-content hidden">
+                                <p>Pilih alasan pencetakan: Hilang, Rusak, atau Perubahan Data. Upload KK dan dokumen pendukung.</p>
+                            </div>
+                        </div>
+
+                         <!-- 10. DETAIL KIA -->
+                        <div id="detail-kia" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Kartu Identitas Anak (KIA)</h3>
+                            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-kia', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-kia', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-kia" class="internal-content">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Akta Kelahiran Anak</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ KK & KTP Orang Tua</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Pas Foto 4x6 (Jika usia > 5 tahun)</li>
+                                </ul>
+                            </div>
+                            <div id="panduan-kia" class="internal-content hidden">
+                                <p>Input data anak (NIK) dan upload foto jika diperlukan (usia 5-17 tahun kurang sehari).</p>
+                            </div>
+                        </div>
+
+                         <!-- 11. DETAIL PINDAH -->
+                        <div id="detail-pindah" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Pindah Datang</h3>
+                            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-pindah', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-pindah', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-pindah" class="internal-content">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ SKPWNI (Surat Pindah) dari daerah asal</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ KTP-el & KK Pemohon</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Alamat Tujuan Lengkap</li>
+                                </ul>
+                            </div>
+                            <div id="panduan-pindah" class="internal-content hidden">
+                                <p>Isi data alamat asal (sesuai SKPWNI) dan alamat tujuan di Tangerang dengan lengkap.</p>
+                            </div>
+                        </div>
+
+                        <!-- 12. DETAIL SKTT -->
+                         <div id="detail-sktt" class="service-detail hidden">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">SKTT (Warga Negara Asing)</h3>
+                            <div class="flex gap-2 mb-6 border-b border-gray-200">
+                                <button onclick="switchInternalTabHTML('syarat-sktt', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg">📋 Persyaratan</button>
+                                <button onclick="switchInternalTabHTML('panduan-sktt', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent">📱 Langkah Pengajuan</button>
+                            </div>
+                            <div id="syarat-sktt" class="internal-content">
+                                <ul class="space-y-2">
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Paspor & KITAS/KITAP</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Surat Keterangan Domisili</li>
+                                    <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">✅ Surat Jaminan Sponsor</li>
+                                </ul>
+                            </div>
+                            <div id="panduan-sktt" class="internal-content hidden">
+                                <p>Upload dokumen keimigrasian dan dokumen penjamin/sponsor.</p>
+                            </div>
+                        </div>
+
                     </div>
                 </section>
 
-                <!-- 6. PROGRES (UPDATED - FIXED) -->
+                <!-- 6. PROGRES -->
                 <section id="progres" class="tab-content hidden fade-in">
                     <h2 class="text-2xl font-bold text-blue-600 mb-6 border-b pb-2">Melihat Status Pengajuan</h2>
-                    
-                    <p class="text-gray-700 mb-6">
-                        Setelah berhasil mengirim pengajuan, Anda dapat memantau setiap tahapan prosesnya melalui menu <strong>"Riwayat Layanan"</strong> di dashboard aplikasi.
-                    </p>
+                    <p class="text-gray-700 mb-6">Pantau setiap tahapan prosesnya melalui menu <strong>"Riwayat Layanan"</strong>.</p>
 
-                    <!-- GRID STATUS: 2 Kolom Kiri-Kanan -->
+                    <!-- GRID STATUS -->
                     <div class="grid md:grid-cols-2 gap-4 mb-8">
-                        
-                        <!-- Status 1: Diajukan -->
                         <div class="flex items-start p-4 bg-blue-50 rounded-lg border border-blue-100 shadow-sm">
                             <span class="flex-shrink-0 w-4 h-4 bg-blue-400 rounded-full mt-1 mr-3"></span>
-                            <div>
-                                <h4 class="font-bold text-blue-800 mb-1">Diajukan</h4>
-                                <p class="text-sm text-gray-600">Dokumen Anda telah berhasil dikirim ke sistem dan sedang menunggu antrean verifikasi oleh petugas.</p>
-                            </div>
+                            <div><h4 class="font-bold text-blue-800 mb-1">Diajukan</h4><p class="text-sm text-gray-600">Menunggu antrean verifikasi.</p></div>
                         </div>
-
-                        <!-- Status 2: Diproses -->
                         <div class="flex items-start p-4 bg-yellow-50 rounded-lg border border-yellow-100 shadow-sm">
                             <span class="flex-shrink-0 w-4 h-4 bg-yellow-400 rounded-full mt-1 mr-3"></span>
-                            <div>
-                                <h4 class="font-bold text-yellow-800 mb-1">Diproses</h4>
-                                <p class="text-sm text-gray-600">Petugas sedang melakukan verifikasi kelengkapan dan validitas data. Mohon pantau terus.</p>
-                            </div>
+                            <div><h4 class="font-bold text-yellow-800 mb-1">Diproses</h4><p class="text-sm text-gray-600">Sedang diverifikasi petugas.</p></div>
                         </div>
-
-                        <!-- Status 3: Selesai -->
                         <div class="flex items-start p-4 bg-green-50 rounded-lg border border-green-100 shadow-sm">
                             <span class="flex-shrink-0 w-4 h-4 bg-green-500 rounded-full mt-1 mr-3"></span>
-                            <div>
-                                <h4 class="font-bold text-green-800 mb-1">Selesai</h4>
-                                <p class="text-sm text-gray-600">Layanan disetujui. Dokumen digital (PDF) sudah terbit dan siap untuk diunduh atau dicetak mandiri.</p>
-                            </div>
+                            <div><h4 class="font-bold text-green-800 mb-1">Selesai</h4><p class="text-sm text-gray-600">Dokumen sudah terbit.</p></div>
                         </div>
-
-                        <!-- Status 4: Ditolak (FIXED CODE) -->
                         <div class="flex items-start p-4 bg-red-50 rounded-lg border border-red-100 shadow-sm">
                             <span class="flex-shrink-0 w-4 h-4 bg-red-500 rounded-full mt-1 mr-3"></span>
-                            <div>
-                                <h4 class="font-bold text-red-800 mb-1">Ditolak / Perbaikan</h4>
-                                <p class="text-sm text-gray-600">Terdapat kekurangan atau kesalahan pada berkas. Cek "Catatan Petugas" untuk instruksi perbaikan.</p>
-                            </div>
+                            <div><h4 class="font-bold text-red-800 mb-1">Ditolak / Perbaikan</h4><p class="text-sm text-gray-600">Cek catatan untuk perbaikan.</p></div>
                         </div>
-
                     </div>
 
-                    <!-- AREA GAMBAR & NARASI (DI BAWAH GRID) -->
                     <div class="w-full max-w-4xl mx-auto">
                         <figure class="bg-white p-3 rounded-xl shadow-lg border border-gray-200">
-                            <img src="https://placehold.co/800x500?text=Tampilan+Halaman+Riwayat+Layanan" 
-                                 alt="Ilustrasi Halaman Riwayat Layanan" 
-                                 class="w-full h-auto rounded-lg object-cover border border-gray-100">
-                            <figcaption class="mt-4 p-4 bg-gray-50 rounded-lg text-gray-700 border-l-4 border-blue-500 text-sm leading-relaxed">
-                                <strong>Gambar 1: Halaman Riwayat Layanan</strong><br>
-                                Ini adalah tampilan menu "Riwayat Layanan" pada aplikasi Sobat Dukcapil. Di sini, seluruh daftar permohonan Anda akan ditampilkan secara kronologis. Perhatikan label status berwarna di sebelah kanan setiap item (seperti "Selesai" berwarna hijau atau "Diajukan" berwarna biru). Klik pada salah satu item pengajuan untuk melihat detail proses, membaca catatan petugas (jika ada perbaikan), atau menekan tombol unduh dokumen jika status sudah selesai.
+                            <img src="https://placehold.co/800x500?text=Tampilan+Riwayat" class="w-full h-auto rounded-lg object-cover" alt="Riwayat">
+                            <figcaption class="mt-4 p-4 bg-gray-50 rounded-lg text-gray-700 border-l-4 border-blue-500 text-sm">
+                                <strong>Gambar:</strong> Halaman Riwayat Layanan untuk memantau status.
                             </figcaption>
                         </figure>
                     </div>
@@ -433,25 +674,42 @@
                     <h2 class="text-2xl font-bold text-blue-600 mb-6 border-b pb-2">Cetak Dokumen Mandiri</h2>
                     <div class="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
                         <div class="text-5xl mb-4">🖨️</div>
-                        <h3 class="text-xl font-bold text-green-800 mb-2">Cetak di Rumah, Sah Secara Hukum!</h3>
-                        <p class="text-gray-600 mb-4">
-                            Dokumen kependudukan saat ini menggunakan <strong>Tanda Tangan Elektronik (QR Code)</strong>. Anda dapat mencetaknya sendiri menggunakan kertas HVS A4 80gram.
-                        </p>
-                        <div class="bg-white p-4 rounded border border-green-100 text-left text-sm text-gray-600 inline-block">
-                            <strong>Cara mendapatkan file PDF:</strong>
-                            <ol class="list-decimal list-inside mt-2">
-                                <li>Buka menu Riwayat Layanan.</li>
-                                <li>Jika status "Selesai", klik tombol "Unduh Dokumen".</li>
-                                <li>Atau cek Email yang terdaftar, file PDF juga dikirim ke sana.</li>
-                            </ol>
-                        </div>
+                        <h3 class="text-xl font-bold text-green-800 mb-2">Cetak di Rumah</h3>
+                        <p class="text-gray-600 mb-4">Dokumen menggunakan Tanda Tangan Elektronik (QR Code), sah dicetak di HVS A4 80gr.</p>
+                    </div>
+                    
+                    <div class="mt-6 bg-white p-6 rounded-lg shadow border border-gray-200">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">Cara Unduh Dokumen (PDF)</h3>
+                        
+                        <ol class="relative border-l border-blue-200 ml-3">                  
+                            <li class="mb-6 ml-6">
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-4 ring-white text-xs text-blue-600 font-bold">1</span>
+                                <h4 class="font-bold text-gray-800 mb-1">Buka Menu Riwayat</h4>
+                                <p class="text-sm text-gray-600">Masuk ke halaman dashboard aplikasi dan klik menu "Riwayat Layanan".</p>
+                            </li>
+                            <li class="mb-6 ml-6">
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-4 ring-white text-xs text-blue-600 font-bold">2</span>
+                                <h4 class="font-bold text-gray-800 mb-1">Pilih Layanan Selesai</h4>
+                                <p class="text-sm text-gray-600">Cari pengajuan Anda yang statusnya sudah berwarna hijau ("Selesai"). Klik pada item tersebut.</p>
+                            </li>
+                            <li class="ml-6">
+                                <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-4 ring-white text-xs text-blue-600 font-bold">3</span>
+                                <h4 class="font-bold text-gray-800 mb-1">Klik Tombol Unduh</h4>
+                                <p class="text-sm text-gray-600">Akan muncul detail pengajuan. Cari tombol "Download Dokumen" atau ikon PDF. Klik untuk menyimpan file ke HP/Laptop Anda.</p>
+                            </li>
+                        </ol>
+
+                        <figure class="mt-6">
+                            <img src="https://placehold.co/600x300?text=Ilustrasi+Tombol+Download" class="w-full rounded-lg border border-gray-100" alt="Ilustrasi Download">
+                            <figcaption class="text-center text-xs text-gray-500 mt-2 italic">Tampilan tombol download pada detail riwayat layanan.</figcaption>
+                        </figure>
                     </div>
                 </section>
 
                 <!-- 8. KONTAK -->
                 <section id="kontak" class="tab-content hidden fade-in">
                     <h2 class="text-2xl font-bold text-blue-600 mb-6 border-b pb-2">Hubungi Kami</h2>
-                    <div class="grid md:grid-cols-2 gap-6">
+                    <div class="grid md:grid-cols-3 gap-6">
                         <a href="mailto:dukcapil@tangerangkota.go.id" class="block p-6 bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-blue-300 transition text-center">
                             <div class="text-4xl mb-2">📧</div>
                             <h3 class="font-bold text-gray-800">Email</h3>
@@ -461,6 +719,11 @@
                             <div class="text-4xl mb-2">📸</div>
                             <h3 class="font-bold text-gray-800">Instagram</h3>
                             <p class="text-blue-600">@disdukcapiltangerangkota</p>
+                        </a>
+                        <a href="https://wa.me/6285156524855" target="_blank" class="block p-6 bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-green-300 transition text-center">
+                            <div class="text-4xl mb-2">📞</div>
+                            <h3 class="font-bold text-gray-800">Whatsapp Pengaduan</h3>
+                            <p class="text-blue-600">085156524855</p>
                         </a>
                     </div>
                 </section>
@@ -473,23 +736,19 @@
     <script>
         // --- 1. NAVIGASI TAB UTAMA ---
         function showTab(tabId) {
-            // Sembunyikan semua konten
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => {
                 content.classList.add('hidden');
-                content.classList.remove('fade-in'); // Reset animasi
+                content.classList.remove('fade-in');
             });
 
-            // Tampilkan konten yang dipilih
             const selectedContent = document.getElementById(tabId);
             if (selectedContent) {
                 selectedContent.classList.remove('hidden');
-                // Trigger reflow agar animasi jalan ulang
                 void selectedContent.offsetWidth; 
                 selectedContent.classList.add('fade-in');
             }
 
-            // Update state tombol sidebar
             const buttons = document.querySelectorAll('.nav-item');
             buttons.forEach(btn => {
                 btn.classList.remove('bg-blue-50', 'text-blue-700');
@@ -502,255 +761,82 @@
                 activeBtn.classList.add('bg-blue-50', 'text-blue-700');
             }
 
-            // Tutup sidebar di mobile setelah klik
             if(window.innerWidth < 768) {
                 document.getElementById('sidebar').classList.add('-translate-x-full');
             }
         }
 
-
-        // --- 2. LOGIKA MASTER-DETAIL (CARA PENGAJUAN) ---
+        // --- 2. LOGIKA MASTER-DETAIL (HTML STATIS) ---
         
-        // Database Konten Detail (JSON Object)
-        const serviceDetails = {
-            'akta-lahir': {
-                title: 'Akta Kelahiran',
-                syarat: [
-                    'Surat Keterangan Lahir dari RS/Bidan (Asli)',
-                    'Buku Nikah Orang Tua (Asli/Legalisir)',
-                    'Kartu Keluarga (KK) Asli',
-                    'KTP-el Orang Tua & 2 Orang Saksi'
-                ],
-                panduan: [
-                    'Login aplikasi Sobat Dukcapil.',
-                    'Pilih menu <strong>Akta Kelahiran</strong>.',
-                    'Isi formulir data anak, orang tua, dan saksi.',
-                    'Upload foto dokumen persyaratan.',
-                    'Klik Kirim dan pantau di Riwayat.'
-                ]
-            },
-            'akta-mati': {
-                title: 'Akta Kematian',
-                syarat: [
-                    'Surat Keterangan Kematian dari RS/Kelurahan',
-                    'KK Jenazah (Asli)',
-                    'KTP-el Jenazah (Jika ada)',
-                    'KTP-el Pelapor & Saksi'
-                ],
-                panduan: [
-                    'Pilih menu <strong>Akta Kematian</strong>.',
-                    'Input data jenazah dan pelapor.',
-                    'Upload berkas surat kematian dan identitas.',
-                    'Kirim pengajuan.'
-                ]
-            },
-            'akta-kawin': {
-                title: 'Akta Perkawinan (Non-Muslim)',
-                syarat: [
-                    'Surat Pemberkatan Agama (Gereja/Vihara/Pura)',
-                    'KTP-el & KK Suami Istri',
-                    'Pas Foto berdampingan (Warna)',
-                    'Akta Cerai/Kematian jika status Janda/Duda'
-                ],
-                panduan: [
-                    'Pilih menu <strong>Akta Perkawinan</strong>.',
-                    'Lengkapi data mempelai.',
-                    'Upload bukti pemberkatan.',
-                    'Tentukan jadwal verifikasi jika diperlukan.'
-                ]
-            },
-            'akta-cerai': {
-                title: 'Akta Perceraian',
-                syarat: [
-                    'Salinan Putusan Pengadilan (Inkrah)',
-                    'Kutipan Akta Perkawinan Asli',
-                    'KTP-el & KK'
-                ],
-                panduan: [
-                    'Pilih menu <strong>Akta Perceraian</strong>.',
-                    'Isi data sesuai putusan pengadilan.',
-                    'Upload putusan dan akta kawin lama.'
-                ]
-            },
-            'kutipan2': {
-                title: 'Kutipan Ke-2 (Hilang/Rusak)',
-                syarat: [
-                    'Surat Kehilangan Kepolisian (jika hilang)',
-                    'Foto Fisik Akta (jika rusak)',
-                    'KTP-el & KK Pemohon'
-                ],
-                panduan: [
-                    'Pilih menu <strong>Kutipan Ke-2</strong>.',
-                    'Pilih alasan (Hilang atau Rusak).',
-                    'Upload bukti pendukung.'
-                ]
-            },
-            'perbaikan': {
-                title: 'Perbaikan Akta',
-                syarat: [
-                    'Dokumen pendukung benar (Ijazah/Buku Nikah)',
-                    'Penetapan Pengadilan (jika ganti nama)',
-                    'Akta Asli yang salah'
-                ],
-                panduan: [
-                    'Pilih menu <strong>Perbaikan Akta</strong>.',
-                    'Input data yang benar.',
-                    'Upload bukti pendukung validasi.'
-                ]
-            },
-            'kk': {
-                title: 'Kartu Keluarga (KK)',
-                syarat: [
-                    'KK Lama (Asli)',
-                    'Buku Nikah (jika status berubah)',
-                    'Surat Lahir/Mati (jika tambah/kurang anggota)',
-                    'Surat Pindah (jika pendatang)'
-                ],
-                panduan: [
-                    'Pilih menu <strong>Kartu Keluarga</strong>.',
-                    'Pilih jenis perubahan (Tambah anak, pisah KK, dll).',
-                    'Upload dokumen pendukung.'
-                ]
-            },
-            'ktp': {
-                title: 'KTP Elektronik',
-                syarat: [
-                    'KK Terbaru',
-                    'Surat Kehilangan (jika hilang)',
-                    'Fisik KTP rusak (jika rusak)'
-                ],
-                panduan: [
-                    'Pilih menu <strong>KTP-el</strong>.',
-                    'Pilih alasan cetak ulang.',
-                    'Upload KK dan dokumen pendukung.'
-                ]
-            },
-            'kia': {
-                title: 'Kartu Identitas Anak (KIA)',
-                syarat: [
-                    'Akta Kelahiran Anak',
-                    'KK & KTP Orang Tua',
-                    'Pas Foto 4x6 (jika anak > 5 tahun)'
-                ],
-                panduan: [
-                    'Pilih menu <strong>KIA</strong>.',
-                    'Masukkan data anak.',
-                    'Upload foto jika diperlukan.'
-                ]
-            },
-            'pindah': {
-                title: 'Pindah Datang',
-                syarat: [
-                    'SKPWNI (Surat Pindah) dari daerah asal',
-                    'KTP-el & KK',
-                    'Alamat tujuan lengkap'
-                ],
-                panduan: [
-                    'Pilih menu <strong>Perpindahan</strong>.',
-                    'Isi data daerah asal dan tujuan.',
-                    'Upload SKPWNI.'
-                ]
-            }
-        };
-
-        function openDetail(key) {
-            const data = serviceDetails[key];
-            if(!data) return;
-
-            const container = document.getElementById('detail-content-placeholder');
-            
-            // Generate HTML untuk detail view
-            container.innerHTML = `
-                <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">${data.title}</h3>
-                
-                <!-- Tabs Internal -->
-                <div class="flex gap-2 mb-6 border-b border-gray-200">
-                    <button onclick="switchInternalTab('tab-syarat', this)" class="internal-tab-btn px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-bold bg-blue-50 rounded-t-lg transition">📋 Persyaratan</button>
-                    <button onclick="switchInternalTab('tab-panduan', this)" class="internal-tab-btn px-4 py-2 text-gray-500 border-b-2 border-transparent font-medium hover:text-blue-600 transition">📱 Langkah Pengajuan</button>
-                </div>
-
-                <!-- Isi Tab Syarat -->
-                <div id="tab-syarat" class="internal-content">
-                    <ul class="space-y-2">
-                        ${data.syarat.map(item => `
-                            <li class="flex items-start p-3 bg-gray-50 rounded border border-gray-100">
-                                <span class="text-green-500 mr-2">✔</span> ${item}
-                            </li>
-                        `).join('')}
-                    </ul>
-                </div>
-
-                <!-- Isi Tab Panduan -->
-                <div id="tab-panduan" class="internal-content hidden">
-                    <ol class="space-y-4 relative border-l border-gray-200 ml-2">
-                         ${data.panduan.map((item, index) => `
-                            <li class="ml-6">
-                                <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-4 ring-white text-xs font-bold text-blue-600">
-                                    ${index + 1}
-                                </span>
-                                <div class="p-3 bg-white border border-gray-100 rounded shadow-sm text-gray-700">
-                                    ${item}
-                                </div>
-                            </li>
-                        `).join('')}
-                    </ol>
-                </div>
-            `;
-
-            // Ganti View
+        function openStaticDetail(detailId) {
+            // Sembunyikan list menu
             document.getElementById('layanan-list-view').classList.add('hidden');
-            document.getElementById('layanan-detail-view').classList.remove('hidden');
-            document.getElementById('layanan-detail-view').classList.add('fade-in');
+            
+            // Tampilkan container detail utama
+            document.getElementById('detail-container').classList.remove('hidden');
+            document.getElementById('detail-container').classList.add('fade-in');
+
+            // Sembunyikan semua konten detail service
+            const allDetails = document.querySelectorAll('.service-detail');
+            allDetails.forEach(el => el.classList.add('hidden'));
+
+            // Tampilkan detail service yang dipilih
+            const selectedDetail = document.getElementById(detailId);
+            if(selectedDetail) {
+                selectedDetail.classList.remove('hidden');
+            }
         }
 
-        function closeDetail() {
-            document.getElementById('layanan-detail-view').classList.add('hidden');
+        function closeStaticDetail() {
+             // Sembunyikan container detail
+            document.getElementById('detail-container').classList.add('hidden');
+            
+            // Tampilkan kembali list menu
             document.getElementById('layanan-list-view').classList.remove('hidden');
             document.getElementById('layanan-list-view').classList.add('fade-in');
         }
 
-        function switchInternalTab(contentId, btnElement) {
-            // Hide all internal contents
-            document.getElementById('tab-syarat').classList.add('hidden');
-            document.getElementById('tab-panduan').classList.add('hidden');
+        // --- 3. LOGIKA TAB INTERNAL (SYARAT vs PANDUAN) HTML ---
+        function switchInternalTabHTML(contentId, btnElement) {
+            // Cari parent service-detail terdekat agar tidak konflik dengan tab lain
+            const parent = btnElement.closest('.service-detail');
             
-            // Show selected
-            document.getElementById(contentId).classList.remove('hidden');
-            document.getElementById(contentId).classList.add('fade-in');
+            // Sembunyikan semua .internal-content di dalam parent ini
+            const contents = parent.querySelectorAll('.internal-content');
+            contents.forEach(el => el.classList.add('hidden'));
 
-            // Reset button styles
-            const btns = document.querySelectorAll('.internal-tab-btn');
+            // Tampilkan content yang dipilih
+            const target = document.getElementById(contentId);
+            if(target) {
+                target.classList.remove('hidden');
+                target.classList.add('fade-in');
+            }
+
+            // Reset style tombol di dalam parent ini
+            const btns = parent.querySelectorAll('.internal-tab-btn');
             btns.forEach(b => {
                 b.classList.remove('text-blue-600', 'border-blue-600', 'font-bold', 'bg-blue-50');
-                b.classList.add('text-gray-500', 'border-transparent', 'font-medium');
+                b.classList.add('text-gray-500', 'border-transparent');
             });
 
-            // Active button style
-            btnElement.classList.remove('text-gray-500', 'border-transparent', 'font-medium');
+            // Set style tombol aktif
+            btnElement.classList.remove('text-gray-500', 'border-transparent');
             btnElement.classList.add('text-blue-600', 'border-blue-600', 'font-bold', 'bg-blue-50');
         }
 
-
-        // --- 3. MOBILE SIDEBAR LOGIC ---
+        // --- 4. MOBILE SIDEBAR LOGIC ---
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const closeSidebarBtn = document.getElementById('close-sidebar-btn');
         const sidebar = document.getElementById('sidebar');
 
         mobileBtn.addEventListener('click', () => {
             sidebar.classList.remove('hidden');
-            // Timeout kecil agar transisi slide-in jalan
-            setTimeout(() => {
-                sidebar.classList.remove('-translate-x-full');
-            }, 10);
+            setTimeout(() => { sidebar.classList.remove('-translate-x-full'); }, 10);
         });
 
         closeSidebarBtn.addEventListener('click', () => {
             sidebar.classList.add('-translate-x-full');
         });
-
     </script>
 </body>
 </html>
-
-
-
